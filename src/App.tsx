@@ -1,24 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+import CodeMirror from 'react-codemirror'
+import '../node_modules/codemirror/lib/codemirror.css';
 import './App.css';
+//@ts-ignore
+import { toHtml } from 'pod6'
 
+const { useState } = React;
+const makeHtml = (text:string) => {
+  try {
+   return toHtml().run(text)
+  } catch(e) {
+    console.log(e)
+    return 'err'
+  }
+}
 const App: React.FC = () => {
+  const [text, updateText] = useState('');
+  var options = {
+    lineNumbers: true,
+ };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">pod6 to html</h1>
+      <div className="layout">
+        <div className="layout__panel flex flex--row">
+          <div className="layout__panel left">
+          <CodeMirror value={text} autoFocus onChange={updateText} options={options} />
+           </div>
+
+          <div className="layout__panel right"
+          dangerouslySetInnerHTML={{__html: makeHtml(text)}} ></div>
+        </div>
+      </div>
     </div>
   );
 }
