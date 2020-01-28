@@ -35,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-codemirror": "^1.0.3",
+    "pod6": "0.0.9",
+    "react-codemirror": "^1.0.0"
   }
 }
