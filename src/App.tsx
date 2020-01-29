@@ -10,8 +10,9 @@ const makeHtml = (text:string) => {
   try {
    return toHtml().run(text)
   } catch(e) {
-    console.log(e)
-    return 'err'
+    return `<p>There may have been an error.
+Check pod6 syntax at <a target="_blank" href="https://raw.githubusercontent.com/zag/js-pod6/master/doc/S26-documentation.pod6">Synopsis 26</a>
+or please, fill issue <a target="_blank" href="https://github.com/zag/js-pod6/issues">here</a>.</p><p>Technical details (please, attach this to issue):</p><pre><code>${e}</code></pre>`
   }
 }
 const App: React.FC = () => {
