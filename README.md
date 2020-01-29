@@ -1,29 +1,14 @@
 
 # Simple pod6 to html online converter
 
-## Available Scripts
+This editor is intended for use in the implementation and testing of the [pod6 implementation in JavaScript](https://github.com/zag/js-pod6).
 
-In the project directory, you can run:
+It will also be useful to familiarize yourself with the pod6 format.
 
-### `yarn start`
+## How to report 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In case of error, please, check pod6 syntax [Synopsis 26](https://raw.githubusercontent.com/zag/js-pod6/master/doc/S26-documentation.pod6) at first.
+Please, fill issue [https://github.com/zag/js-pod6/issues]("https://github.com/zag/js-pod6/issues") and include pod6 text and any Technical details.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+With best regards,
+Alex
