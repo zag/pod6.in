@@ -8,7 +8,7 @@ It will also be useful to familiarize yourself with the pod6 format.
 ## How to report 
 
 In case of error, please, check pod6 syntax [Synopsis 26](https://raw.githubusercontent.com/zag/js-pod6/master/doc/S26-documentation.pod6) at first.
-Please, fill issue [https://github.com/zag/js-pod6/issues]("https://github.com/zag/js-pod6/issues") and include pod6 text and any Technical details.
+Please, fill issue [github.com/zag/js-pod6/issues](https://github.com/zag/js-pod6/issues) and include pod6 text and any Technical details.
 
 With best regards,
 Alex
