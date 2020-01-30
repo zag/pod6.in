@@ -59,6 +59,7 @@
 
 .CodeMirror {
   height: auto;
+  font-family: inherit;
 }
 pre {
   overflow-x: auto;
@@ -88,6 +89,7 @@ text-align: left;
     word-wrap: break-word;
     margin : 0 1em;
   width: 47%;
+  font-size: 17px;
 }
 
 
