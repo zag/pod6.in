@@ -55,7 +55,7 @@ const App: React.FC = () => {
 },[text])
   return (
     <div className="App">
-      <h1 className="title">pod6 to html ({version})</h1>
+      <h1 className="title">pod6 to html (<a target="_blank" href="https://www.npmjs.com/package/pod6">{version}</a>)</h1>
       <div className="layout">
         <div className="layout__panel flex flex--row">
           <div className="layout__panel left">
