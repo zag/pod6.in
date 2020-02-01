@@ -2,8 +2,9 @@ import React from 'react';
 import CodeMirror from 'react-codemirror'
 import '../node_modules/codemirror/lib/codemirror.css';
 import './App.css';
+
 //@ts-ignore
-import { toHtml } from 'pod6'
+import { toHtml , version } from 'pod6'
 
 const { useState, useRef, useEffect } = React;
 const makeHtml = (text:string) => {
@@ -54,7 +55,7 @@ const App: React.FC = () => {
 },[text])
   return (
     <div className="App">
-      <h1 className="title">pod6 to html</h1>
+      <h1 className="title">pod6 to html ({version})</h1>
       <div className="layout">
         <div className="layout__panel flex flex--row">
           <div className="layout__panel left">
