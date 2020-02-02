@@ -32,6 +32,7 @@ const App: React.FC = () => {
    //@ts-ignore
   marks.forEach(marker => marker.clear())
   let cmMrks:Array<never> = []
+  if (result.errors ) {
   result.errors.map((loc:any)=>{
     // @ts-ignore
     let from = {line: loc.start.line-1, ch: loc.start.column-1 - (loc.start.offset === loc.end.offset)};
@@ -50,6 +51,7 @@ const App: React.FC = () => {
                     
     )
   })
+  }
   updateMarks(cmMrks)
   
 },[text])
