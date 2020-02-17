@@ -78,7 +78,7 @@ white-space: pre-wrap;
 word-break: break-word;
 word-wrap: break-word;
 width: 50%;
-font-size: 17px;
+font-size: 15px;
 overflow: scroll;
 text-align: left;
 }
@@ -89,7 +89,7 @@ text-align: left;
     word-wrap: break-word;
     margin : 0 1em;
   width: 47%;
-  font-size: 17px;
+  font-size: 15px;
   overflow: scroll;
 }
 
