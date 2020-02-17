@@ -6,6 +6,40 @@ import './App.css';
 //@ts-ignore
 import { toHtml , version } from 'pod6'
 
+const deftext = 
+`=head1 Title
+=head2 Subtitle
+
+Options B<are>:
+
+=item1  Animal
+=item2     Vertebrate
+=item2     Invertebrate
+
+=item1  Phase
+=item2     Solid
+=item2     Liquid
+=item2     Gas
+=item2     I<Chocolate>
+
+I<Table>
+
+=begin table
+                        Secret
+        Superhero       Identity          Superpower
+        =============   ===============   ===================
+        The Shoveller   Eddie Stevens     King Arthur's
+                                          singing shovel
+
+        Blue Raja       Geoffrey Smith    Master of cutlery
+
+        Mr Furious      Roy Orson         Ticking time bomb
+                                          of fury
+
+        The Bowler      Carol Pinnsler    Haunted bowling ball
+
+=end table
+`
 const { useState, useRef, useEffect } = React;
 const makeHtml = (text:string) => {
   try {
@@ -17,7 +51,7 @@ or please, fill issue <a target="_blank" href="https://github.com/zag/js-pod6/is
   }
 }
 const App: React.FC = () => {
-  const [text, updateText] = useState('')
+  const [text, updateText] = useState(deftext)
   const [marks, updateMarks] = useState([])
 
   var options = {
