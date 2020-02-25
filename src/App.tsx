@@ -9,6 +9,9 @@ import { toHtml , version } from 'pod6'
 const deftext = 
 `=head1 Title
 =head2 Subtitle
+      
+=code
+This is a text
 
 Options B<are>:
 
@@ -24,7 +27,7 @@ Options B<are>:
 
 I<Table>
 
-=begin table
+=begin table :caption('Super table!')
                         Secret
         Superhero       Identity          Superpower
         =============   ===============   ===================
