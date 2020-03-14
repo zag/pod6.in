@@ -10,8 +10,8 @@ const deftext =
 `=head1 Title
 =head2 Subtitle
       
-=code
-This is a text
+=for code :allow(B)
+This I<is> a B<text>
 
 Options B<are>:
 

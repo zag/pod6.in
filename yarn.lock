@@ -7422,10 +7422,10 @@ pnp-webpack-plugin@1.5.0:
   dependencies:
     ts-pnp "^1.1.2"
 
-pod6@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/pod6/-/pod6-0.0.14.tgz#57bb12569b28088fbeeaf29ab12c2e33d0de386a"
-  integrity sha512-zLsbHFTMUyLREaFDsR2D/yjSbLRpCbey5q9nuym9JwIdgYSkL9pfBybD2jM4YgigrYSDnsfHqpxxxOVcLxvpjQ==
+pod6@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/pod6/-/pod6-0.0.15.tgz#ae8e0617863866584d0668ad3f46b82d9b691fef"
+  integrity sha512-krQPF4DZsJe+Bzs/B/iKp19JntJ2hwfZngYOrnk3fgF9GteSs6Bus211ilAtptiiaLmMSsdAEbxRJkb6goOEkA==
 
 portfinder@^1.0.25:
   version "1.0.25"
