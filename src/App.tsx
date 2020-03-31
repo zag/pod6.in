@@ -13,6 +13,11 @@ const deftext =
 =for code :allow(B)
 This I<is> a B<text>
 
+=para
+Use a C<for> loop instead.N<The Raku C<for> loop is far more
+powerful than its Perl 5 predecessor.> Preferably with an explicit
+iterator variable.
+
 Options B<are>:
 
 =item1  Animal

@@ -49,3 +49,12 @@ td {
 padding: 8px;
 text-align: center;
 }
+
+.footnote a {
+  text-decoration: none;
+}
+.footnotes {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #eee;
+}
