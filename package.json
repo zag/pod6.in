@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts --max_old_space_size=8192 --expose-gc build",
+    "build": "env INLINE_RUNTIME_CHUNK=false env GENERATE_SOURCEMAP=false react-scripts --max_old_space_size=8192 --expose-gc build --dev",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
