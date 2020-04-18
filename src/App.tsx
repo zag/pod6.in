@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror'
+import {EditorConfiguration} from 'codemirror'
 import '../node_modules/codemirror/lib/codemirror.css';
 import './App.css';
 
@@ -62,8 +63,12 @@ const App: React.FC = () => {
   const [text, updateText] = useState(deftext)
   const [marks, updateMarks] = useState([])
 
-  var options = {
+  var options: EditorConfiguration = {
     lineNumbers: true,
+     inputStyle: "contenteditable",
+     //@ts-ignore
+     spellcheck: true,
+     //mode: 'spell-checker'
  };
 
  const inputEl = useRef(null)
