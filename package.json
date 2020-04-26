@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@types/react-codemirror": "^1.0.3",
-    "pod6": "0.0.19",
+    "pod6": "0.0.20",
     "react-codemirror": "^1.0.0"
   }
 }
