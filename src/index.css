@@ -37,17 +37,30 @@ table {
   margin: 0 auto;
   border-spacing: 0;
   border-collapse: collapse;
+  text-align: center;
+
 }
 table caption {
   margin-bottom: 0.8em;
 }
+
+
+table tbody tr:hover {
+  background-color:  #eee;
+  -webkit-transition: .5s;
+  transition: .5s
+}
 tr th {
   vertical-align: bottom;
-  border-bottom: 1px solid #eee;;
-  text-align: center;
+  /* border-bottom: 1px solid #eee;; */
+  border-bottom: 2px solid #eee;
 }
 td {
 padding: 8px;
+border-top: 1px solid #eee;;
+}
+tr:hover {
+  background-color: #ffff99;
 }
 
 .footnote a {
