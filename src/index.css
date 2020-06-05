@@ -58,6 +58,8 @@ tr th {
 td {
   padding: 8px;
   border: 1px solid #eee;
+  background: #eee;
+  padding: 8px;
 }
 
 .footnote a {
