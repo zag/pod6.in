@@ -56,8 +56,8 @@ tr th {
 }
 
 td {
-padding: 8px;
-border: 1px solid #eee;;
+  padding: 8px;
+  border: 1px solid #eee;
 }
 
 .footnote a {
