@@ -53,13 +53,14 @@ table tbody tr:hover {
 tr th {
   vertical-align: bottom;
   border-bottom: 2px solid #eee;
+  background: #eee;
+  padding: 8px;
+
 }
 
 td {
   padding: 8px;
   border: 1px solid #eee;
-  background: #eee;
-  padding: 8px;
 }
 
 .footnote a {
