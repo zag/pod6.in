@@ -237,7 +237,7 @@ const scrollEditorHandler = (editor) => {
   }
   return (
     <div className="App">
-      <h1 className="title">pod6 to html (<a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/pod6">{version}</a>)</h1>
+      <h1 className="title">pod6 to html (<a target="_blank" rel="noopener noreferrer" href="https://github.com/zag/js-pod6">{version}</a>)</h1>
       <p onClick={ () => { console.log(`toogle ${showTree}`);setShowTree(!showTree)}} title="view tree" style={{'float':'right', marginTop:'-1.5em'}}>🔎</p>
       <div className="layout">
           <div className="left" onMouseEnter={()=>setPreviewScrolling(false)}
