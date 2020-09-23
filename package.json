@@ -1,6 +1,6 @@
 {
   "name": "pod6-editor",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/react-codemirror": "^1.0.3",
-    "pod6": "0.0.26",
+    "pod6": "0.0.28",
     "react-codemirror2": "^7.2.1"
   }
 }
