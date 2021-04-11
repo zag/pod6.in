@@ -1,6 +1,8 @@
 import React from 'react';
+import mermaid from 'mermaid';
+
 // import CodeMirror from 'react-codemirror'
-import {Controlled as CodeMirror} from 'react-codemirror2'
+import {UnControlled as CodeMirror} from 'react-codemirror2'
 import {EditorConfiguration} from 'codemirror'
 // import debounce from "debounce"
 import '../node_modules/codemirror/lib/codemirror.css';
@@ -9,8 +11,10 @@ import './App.css';
 
 //@ts-ignore
 import { toHtml , version, parse } from 'pod6'
+import { AstToReact } from './ast-to-react';
 
-const deftext = 
+
+let deftext = 
 `=head1 Title
 =head2 Subtitle
 
@@ -63,7 +67,21 @@ I<Table>
 
 =end table
 `
-const { useState, useRef, useEffect } = React;
+deftext = `
+=begin Dia
+graph LR
+A --- B
+B-->C[fa:fa-ban forbidden]
+B-->D(fa:fa-spinner);
+=end Dia
+`
+// deftext = `
+// graph LR
+// A --- B
+// B-->C[fa:fa-ban forbidden]
+// B-->D(fa:fa-spinner);
+// `
+const { useState, useMemo,  useRef, useEffect } = React;
 // @ts-ignore
 const getLine = ( node ) => {
   if (node.location) {
@@ -108,6 +126,62 @@ function useDebouncedEffect(fn, deps, time) {
   }, dependencies);
 }
 
+
+const PrintChart = React.memo(({chart}: {chart:string})=><PrintChartO chart={chart+"10000000000000000"}/>, (
+    a,b
+)=>{
+    console.log({a,b})
+    return true
+})
+const PrintChartO = ({chart}:{chart:string})=>{
+    console.log(`PrintChart ${chart}`)
+    return <pre>{chart}</pre>
+}
+
+const Mermaid = React.memo(({chart}: {chart:string})=><MermaidO chart={chart}/> )
+const MermaidO = ({ chart }: {chart:string})=>{
+        const inputEl = useRef(null);
+              // Mermaid initilize its config
+        // mermaid.initialize({...DEFAULT_CONFIG, ...config})
+        const config = {
+            // startOnLoad: true,
+            // theme: "default",
+            securityLevel: "loose",
+        }
+        if ( inputEl ) {
+        mermaid.initialize(config)
+        //@ts-ignore
+        mermaid.init( inputEl)
+        }
+        // useEffect(() => {
+        //     mermaid.contentLoaded()
+        //   }, [config])
+
+        useEffect(()=>{
+            var insertSvg = function(svgCode:any){
+                // if ( inputEl.current != null ) {
+                    // console.log("memrmr")
+                    if (!inputEl.current) {console.log("ok")}
+                    //@ts-ignore
+                    inputEl.current!.innerHTML = svgCode;
+                // }
+            };
+            console.log("RENDER" + chart)
+            try {
+                mermaid.render('graph-div', chart, insertSvg)
+            }  catch (e) {
+                console.log('view fail', e);
+              }
+            // mermaid.render('graph-div', chart, ()=>{})
+        }, [chart])
+        return <div className="mermaid1" ref={inputEl}/>
+}
+
+const DiaComp =({chart}:{chart:string})=>{
+    return useMemo(()=><Mermaid  chart={chart}/>,[chart])
+}
+
+
 let instanceCM:CodeMirror.Editor 
 const App: React.FC = () => {
   const [text, updateText] = useState(deftext)
@@ -118,9 +192,9 @@ const App: React.FC = () => {
   const refValue = useRef(isPreviewScroll);
   const [showTree, setShowTree] = useState(false)
 
-  useDebouncedEffect(() => {
-    updateResult(makeHtml(text));
-  }, [text], 100)
+//   useDebouncedEffect(() => {
+//     updateResult(makeHtml(text));
+//   }, [text], 100)
 
   useEffect(() => {
       refValue.current = isPreviewScroll;
@@ -145,8 +219,8 @@ const App: React.FC = () => {
                                 const offsetTop = n.offsetTop
                                 return { line, offsetTop}
                     })
-    //@ts-ignore                      
-    updateScrollMap(newScrollMap)
+    // //@ts-ignore                      
+    // updateScrollMap(newScrollMap)
     //@ts-ignore
     const listener = (e) => { 
       if (!isPreviewScroll ) {return}
@@ -157,7 +231,8 @@ const App: React.FC = () => {
         const lineElement = c.shift() || newScrollMap[ newScrollMap.length - 1 ]
         return lineElement.line
         }
-      const line  =  getLine(element.scrollTop)
+      const line  =  getLine(element.scrollTop) ||0 
+      console.log({line})
       if (instanceCM) {
         const t = element.scrollTop === 0 ? 0 : instanceCM.charCoords({line: line, ch: 0}, "local").top;
         instanceCM.scrollTo(null, t);
@@ -208,10 +283,46 @@ const App: React.FC = () => {
 },[text])
  const previewCode = <div  className=" right"><pre><code className="right" style={{textAlign:"left"}}>{JSON.stringify(parse(text), null, 2)}</code></pre></div>
 // console.log(result.toString())
+// const Res = AstToReact({file:text})
+// //@ts-ignore
+// const previewHtml =  <div onMouseEnter={()=>setPreviewScrolling(true)} 
+//                           onMouseMove={()=>setPreviewScrolling(true)} ref={previewEl} className=" right"
+// dangerouslySetInnerHTML={{__html: result}} ></div>
+
+
+// const config = {
+//     // startOnLoad: true,
+//     // theme: "default",
+//     securityLevel: "loose",
+// }
+// mermaid.initialize(config)
+
+
+const plugins = {
+    'B<>':({meta, content,children}:any)=>{ 
+        return <i>{children}</i> },
+    //@ts-ignore
+    'Dia': ({key, content, children})=>{ 
+        let srcData = "test"
+        if (content) {
+            srcData = children[0]?.props.value
+        }
+        console.log({srcData, key})
+        return <Mermaid key={key} chart={srcData}/>},
+
+}
+// console.log(` render with ${text}`)
 //@ts-ignore
-const previewHtml =  <div onMouseEnter={()=>setPreviewScrolling(true)} 
+const previewHtml = useMemo( ()=>
+<div onMouseEnter={()=>setPreviewScrolling(true)} 
                           onMouseMove={()=>setPreviewScrolling(true)} ref={previewEl} className=" right"
-dangerouslySetInnerHTML={{__html: result}} ></div>
+> 
+
+< AstToReact file={text} plugins={ plugins }/>
+</div>
+,[text])
+
+
 //@ts-ignore
 const scrollEditorHandler = (editor) => {
   if (refValue.current) { return }
@@ -244,14 +355,37 @@ const scrollEditorHandler = (editor) => {
                                  onMouseMove={()=>setPreviewScrolling(false)}
           >
           <CodeMirror 
-              value={text}
+              value={deftext}
               editorDidMount={ editor => { instanceCM = editor } }
-              onBeforeChange={ (editor, data, value) => { updateText(value) } }
+              onBeforeChange={ (editor, data, value, next) => { 
+                next()
+                    // check if all parsing ok
+                // console.log(next)
+                // try {
+                // mermaid.parse(value);
+                // // updateText(value) 
+                // console.log(`call next ${value}`)
+                //  next()
+                // } catch (e){
+                //     console.log('update :view fail', e);
+                // }
+
+                 } }
+                onChange = { (editor, data, value) => { 
+                    try {
+                        // mermaid.parse(value);
+                        // console.log(`udopaet value: ${value}`)
+                        updateText(value) 
+                        } catch (e) {
+                        console.log('onChange :view fail', e);
+                    }
+                } }
               onScroll={scrollEditorHandler}
               options={options} 
               className="editor"
            />
            </div>
+
            {showTree ? previewCode : previewHtml}
       </div>
     </div>
