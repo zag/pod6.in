@@ -10,6 +10,23 @@
 .App> h1, h1 > a {
   color: lightgray;
 }
+.App > div svg {
+    padding: 10px;
+}
+/* control buttons styles */
+.iconOn {
+    color: black;
+}
+.iconOff {
+    color:darkgray;
+}
+
+.App > div > h1{
+    text-align: right;
+    font-size: small;
+    float: right;
+    color: lightgray;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -112,4 +129,11 @@ height: 100%;
   to {
     transform: rotate(360deg);
   }
+}
+
+#zdgraph-div {
+    display: none;
+}
+.layoutPreview .Editorright {
+    z-index: -999999;
 }
