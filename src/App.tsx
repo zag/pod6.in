@@ -144,7 +144,6 @@ const App1: React.FC = () => {
           position: "top-center"
         });
       };
-    console.log({query})
     return   <div className="App">
     <div style={{  'textAlign': 'left',
                     'margin': '0em 1em',
