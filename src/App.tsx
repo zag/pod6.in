@@ -8,7 +8,7 @@ import { ImListNumbered } from 'react-icons/im'
 import {BsArrowsFullscreen, AiOutlineClear, AiOutlineLink} from 'react-icons/all'
 import { useHistory } from "react-router-dom"
 import { podlite as podlite_core } from "podlite";
-import { plugin as DiagramPlugin } from '@podlite/diagrams'
+import { plugin as DiagramPlugin } from '@podlite/diagram'
 
 import '../node_modules/codemirror/lib/codemirror.css';
 
@@ -88,6 +88,7 @@ const App1: React.FC = () => {
     // wrap all elements and add line link info
     const wrapFunction = (node: Node, children) => {
         if (typeof node !== 'string' && 'type' in node && 'location' in node) {
+            //@ts-ignore
             const line = node.location.start.line
             return <div key={line} className="line-src" data-line={line} id={`line-${line}`}>{children}</div>
         } else {
@@ -118,7 +119,7 @@ const App1: React.FC = () => {
           });
           let tree = podlite.parse(text);
           const asAst = podlite.toAstResult(tree);
-
+        //@ts-ignore
         return { result : <Podlite wrapElement={wrapFunction} tree={asAst} />, errors:asAst.errors }
 
     }
