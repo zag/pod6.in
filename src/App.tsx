@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import Editor, {ConverterResult} from '@podlite/editor-react'
-import '@podlite/editor-react/src/Editor.css'
+
 import Podlite from '@podlite/to-jsx'
 import toast from "cogo-toast"
 import copy from "copy-to-clipboard"
@@ -10,10 +10,9 @@ import { useHistory } from "react-router-dom"
 import { podlite as podlite_core } from "podlite";
 import { plugin as DiagramPlugin } from '@podlite/diagram'
 
+import '@podlite/editor-react/lib/index.css'
 import '../node_modules/codemirror/lib/codemirror.css';
-
 import './App.css';
-import "@podlite/editor-react/src/Editor.css"
 
 import { version, parse } from 'pod6'
 
@@ -76,14 +75,40 @@ const { useState, useMemo,  useEffect } = React;
 const App1: React.FC = () => {
     const [showTree, setShowTree] = useState(false)
     const [isLineNumbers, setLineNumbers] = useState(false)
-    const [isFullScreenPreview, setFullScreenPreview] = useState(false)
     let history = useHistory()
-    let default_text 
-    if (history && history.location ) {
-         const params = new URLSearchParams(history.location.hash)
-         default_text = params.get('#p')
+
+    // URL state management
+    type GetHashStringParams = {p:string, f:boolean}
+    const pushHistory = (args:GetHashStringParams ) => {
+        const result = getHashString(args)
+        if (history) {
+            history.push({hash: result})
+        } 
     }
+
+    const getHashString = ({p:planText, f:isFullScreen}:GetHashStringParams):string => {
+        const params = new URLSearchParams()
+        planText ? params.append("p", planText) : params.delete("p")
+        isFullScreen ? params.append("f", "1") : params.delete("f")
+        return params.toString()
+    }
+    
+    const getStateFromHash = ():GetHashStringParams => {
+        if (history && history.location ) {
+        const params = new URLSearchParams(history.location.hash)
+        const p = params.get('#p') || params.get('p')
+        const f = Boolean ( params.get('f') ||params.get('#f') )
+        return  { p, f}
+        } else { return {p:null, f:null}}
+    }
+   // URL state management
+
+    let default_text = getStateFromHash().p
+    let isFullscreenByDefault = getStateFromHash().f
+
     const [query, setQuery] = useState(default_text || deftext)
+
+    const [isFullScreenPreview, setFullScreenPreview] = useState(isFullscreenByDefault)
 
     // wrap all elements and add line link info
     const wrapFunction = (node: Node, children) => {
@@ -95,23 +120,19 @@ const App1: React.FC = () => {
             return children
         }
     }
-    const updateHistory = (query )=>{
-        const params = new URLSearchParams()
-        if (query) {
-          params.append("p", query)
-        } else {
-          params.delete("p")
-        }
-        if (history) {
-         history.push({hash: params.toString()})
-        }  
-    }
+
     const onConvertSource = (text:string):ConverterResult=>{
+        
         if (showTree ) {
             const previewCode = <div  className=" right"><pre><code className="right" style={{textAlign:"left"}}>{JSON.stringify(parse(text), null, 2)}</code></pre></div>
             return {result:previewCode}
         }
-        updateHistory(text)
+        
+        pushHistory({
+            p:text,
+            f: isFullScreenPreview
+        })
+
         setChanged(true)
 
         let podlite = podlite_core({ importPlugins: true }).use({
@@ -119,10 +140,18 @@ const App1: React.FC = () => {
           });
           let tree = podlite.parse(text);
           const asAst = podlite.toAstResult(tree);
+
         //@ts-ignore
         return { result : <Podlite wrapElement={wrapFunction} tree={asAst} />, errors:asAst.errors }
 
     }
+        
+    useEffect(() => {
+        pushHistory({
+            p:getStateFromHash().p,
+            f: isFullScreenPreview
+        })
+      }, [isFullScreenPreview])
     
     // useEffect(() => {
     //     const params = new URLSearchParams()
@@ -153,7 +182,7 @@ const App1: React.FC = () => {
         <BsArrowsFullscreen className={ isFullScreenPreview ? 'iconOn' : 'iconOff' } title="Toggle fullscreen" onClick={()=>setFullScreenPreview(!isFullScreenPreview)}/>
         <AiOutlineClear className={ isChanged ? 'iconOn' : 'iconOff' } title="Reset text to template" onClick={()=>{ 
             // setChanged(false); // setQuery(deftext);  // updateHistory(deftext);
-            document.location.assign('/')
+            if ( window.confirm('Are you really sure?') ) { document.location.assign('/') }
             }}/>
         <AiOutlineLink onClick={ copyToClipboard}  className='iconOn' title="Copy url to this text"/>
     </div>
