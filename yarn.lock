@@ -1177,10 +1177,10 @@
     react-is "^16.12.0"
     ts-jest "^26.4.1"
 
-"@podlite/editor-react@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@podlite/editor-react/-/editor-react-0.0.2.tgz#18f308e3ab2347557515809a83ef1c74c9319fac"
-  integrity sha512-Td4TBWcJfhEqT6LVpcBklUr6YTlcXOA+xWWjBD2jsybWZkDQZd/TvUUlB6av9cKWrD4NzgoBaoRDurClgdnhEg==
+"@podlite/editor-react@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@podlite/editor-react/-/editor-react-0.0.3.tgz#62d4a8fd7f3f1e2d0f991c46aed7039a9524ecb8"
+  integrity sha512-wRxQt8N5KPIfPPJ9LyzAhIS2CDuHoZBij75uqw3DMA8qnoIuGHWRb8cQ39oBg3Mz32KFMvsFZdDV0+McE4ywMw==
   dependencies:
     codemirror "^5.60.0"
     mousetrap "^1.6.5"

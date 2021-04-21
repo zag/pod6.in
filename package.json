@@ -1,6 +1,6 @@
 {
   "name": "pod6-editor",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "@podlite/editor-react": "0.0.2",
+    "@podlite/editor-react": "0.0.3",
     "@podlite/to-jsx": "^0.0.1",
     "@types/react-codemirror": "^1.0.3",
     "@types/react-router-dom": "^5.1.7",
