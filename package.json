@@ -1,6 +1,6 @@
 {
   "name": "pod6-editor",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

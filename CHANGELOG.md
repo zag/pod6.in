@@ -1,5 +1,8 @@
 # pod6-editor
 
+# 0.1.11
+- fix editor mode
+
 # 0.1.10
 - update libs
 
