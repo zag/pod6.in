@@ -1177,15 +1177,25 @@
     react-is "^16.12.0"
     ts-jest "^26.4.1"
 
-"@podlite/editor-react@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@podlite/editor-react/-/editor-react-0.0.3.tgz#62d4a8fd7f3f1e2d0f991c46aed7039a9524ecb8"
-  integrity sha512-wRxQt8N5KPIfPPJ9LyzAhIS2CDuHoZBij75uqw3DMA8qnoIuGHWRb8cQ39oBg3Mz32KFMvsFZdDV0+McE4ywMw==
+"@podlite/diagram@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@podlite/diagram/-/diagram-0.0.4.tgz#158c83d04b239573acd0a703d2b386e5c3d90544"
+  integrity sha512-fi7MKTOtX8WZ7RagScZR4Cg4q1791GUrFR81D0L0GSiYOAUWd+ADgSRZw16y2zwhRffKP39gaeZgrXWWJS3M9w==
+  dependencies:
+    "@types/node" "^14.11.2"
+    jest-watch-typeahead "^0.6.1"
+    mermaid "^8.9.2"
+    react-is "^16.12.0"
+    ts-jest "^26.4.1"
+
+"@podlite/editor-react@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@podlite/editor-react/-/editor-react-0.0.7.tgz#e6e250e0c35a2042f1199c7d68cfc4ac54ebdb20"
+  integrity sha512-RJvuS6tjLFIbuZhHx4hA8SN2otjc8aSVvxwJ/z3ycpXswdFT3U/u3QKTsGnm0bvHphnykHVttYJruGm8+2x6fA==
   dependencies:
     codemirror "^5.60.0"
     mousetrap "^1.6.5"
     mousetrap-global-bind "^1.1.0"
-    pod6 "0.0.36"
     react-codemirror2 "^7.2.1"
 
 "@podlite/image@^0.0.1":
@@ -1204,13 +1214,13 @@
     json-pointer "^0.6.1"
     pod6 "0.0.36"
 
-"@podlite/to-jsx@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@podlite/to-jsx/-/to-jsx-0.0.1.tgz#4c67a831cceeb6c9141f028e6be67ea655f1799d"
-  integrity sha512-mnOG5vbzqw2dkLQBtz61Jxa4179BcT9JK7GANe907fCW1f0Ayk3d0wwABL2RIIMD9bfvu98wPehObc5Xt5cJ8g==
+"@podlite/to-jsx@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@podlite/to-jsx/-/to-jsx-0.0.4.tgz#0aa9588588cc4616de24322f1d7c07e0094a3685"
+  integrity sha512-XJV/BKKqtvo7XaXYCt+BNbAJ8GLOgmJdqfr9bw/mz5nFS0RQ4m94E7cfPjxROHsJkIzedyGDfLHPbviYxM1bMg==
   dependencies:
-    mermaid "^8.9.2"
-    pod6 "0.0.36"
+    "@podlite/diagram" "^0.0.4"
+    pod6 "0.0.38"
     react-is "^17.0.2"
 
 "@sheerun/mutationobserver-shim@^0.3.2":
@@ -8166,10 +8176,15 @@ pnp-webpack-plugin@1.5.0:
   dependencies:
     ts-pnp "^1.1.2"
 
-pod6@0.0.36, pod6@^0.0.36:
+pod6@0.0.36:
   version "0.0.36"
   resolved "https://registry.yarnpkg.com/pod6/-/pod6-0.0.36.tgz#fdf196cb01209689d8e681dc75fbed3c9a091e39"
   integrity sha512-eR7b53ipYmMhCEzmYTo/1K17pSoSrrIJVi4/dJHHsRfmkL/0CDydIST9kEt1AxZBcsq0FYuuib9Zz6hZneXoEA==
+
+pod6@0.0.38:
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/pod6/-/pod6-0.0.38.tgz#85a803a69066e4ce71493d98f73746d6277e7153"
+  integrity sha512-Li0Fhyj++mazJLVt+yuWajljicWsKxaasKtLEEVggeV9DdAOgzbOQOOFaeFL2iKMmdK56eM8ookVVCN57tMEdQ==
 
 podlite@^0.0.5:
   version "0.0.5"

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import Editor, {ConverterResult} from '@podlite/editor-react'
+import Editor, {ConverterResult} from '@podlite/editor-react/esm'
 
 import Podlite from '@podlite/to-jsx'
 import toast from "cogo-toast"
