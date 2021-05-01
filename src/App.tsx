@@ -190,6 +190,7 @@ const App1: React.FC = () => {
     <Editor 
         isLineNumbers= {isLineNumbers}
         isPreviewModeEnabled = {isFullScreenPreview}
+        isControlled = {true}
         content={query}  
         onChangeSource = { (content:string)=>{
             setQuery(content)
