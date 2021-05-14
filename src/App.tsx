@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Editor, {ConverterResult} from '@podlite/editor-react/esm'
 
 import Podlite from '@podlite/to-jsx'
@@ -70,10 +70,10 @@ I<Table>
 
 =end table
 `
-const { useState, useMemo,  useEffect } = React;
+const { useState,   useEffect } = React;
 
 const App1: React.FC = () => {
-    const [showTree, setShowTree] = useState(false)
+    const [showTree ] = useState(false)
     const [isLineNumbers, setLineNumbers] = useState(false)
     let history = useHistory()
 
