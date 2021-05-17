@@ -1165,61 +1165,49 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@podlite/diagram@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@podlite/diagram/-/diagram-0.0.1.tgz#068b02fa5cfdcdb55ed304381155309829e913a4"
-  integrity sha512-TCyVDDo7/0rpwPVHIxQqisCGDVXHfq9g0p621vVs6/5vfwWG8YynzjBxmYkDVTkhCCprH1XMZ1ehUN84t7iaqQ==
+"@podlite/diagram@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@podlite/diagram/-/diagram-0.0.5.tgz#cc6debb4edd074c4dc5762d120277354cff319ef"
+  integrity sha512-zuyXnEkEB+RbZjc44GnrFThBhWE3Svi5wceuWB+FPgpP4buw8Qj0oZhWLw01q8XnzG7DghnJNEqS1ImMhrFS/Q==
   dependencies:
     "@types/node" "^14.11.2"
     jest-watch-typeahead "^0.6.1"
-    mermaid "^8.9.2"
-    pod6 "0.0.36"
+    mermaid "8.10.1"
     react-is "^16.12.0"
     ts-jest "^26.4.1"
 
-"@podlite/diagram@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@podlite/diagram/-/diagram-0.0.4.tgz#158c83d04b239573acd0a703d2b386e5c3d90544"
-  integrity sha512-fi7MKTOtX8WZ7RagScZR4Cg4q1791GUrFR81D0L0GSiYOAUWd+ADgSRZw16y2zwhRffKP39gaeZgrXWWJS3M9w==
-  dependencies:
-    "@types/node" "^14.11.2"
-    jest-watch-typeahead "^0.6.1"
-    mermaid "^8.9.2"
-    react-is "^16.12.0"
-    ts-jest "^26.4.1"
-
-"@podlite/editor-react@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@podlite/editor-react/-/editor-react-0.0.7.tgz#e6e250e0c35a2042f1199c7d68cfc4ac54ebdb20"
-  integrity sha512-RJvuS6tjLFIbuZhHx4hA8SN2otjc8aSVvxwJ/z3ycpXswdFT3U/u3QKTsGnm0bvHphnykHVttYJruGm8+2x6fA==
+"@podlite/editor-react@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@podlite/editor-react/-/editor-react-0.0.8.tgz#017b37976ec22c99930e1dd540fbe5354bf925a1"
+  integrity sha512-8uEuno8Ca4iAzGDNt9GWoJ57vvI2NrwQBNjEL4bZaGh+6DFrHQEi+Rh54/OcWZebHtGITM9VcGJNp/e6hnn/9w==
   dependencies:
     codemirror "^5.60.0"
     mousetrap "^1.6.5"
     mousetrap-global-bind "^1.1.0"
     react-codemirror2 "^7.2.1"
 
-"@podlite/image@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@podlite/image/-/image-0.0.1.tgz#d9a8d6eceab862b2439bc4c537b5b34006050054"
-  integrity sha512-h1A41lX+MTCY/U1ALGvaVWb+IKN3a0LJmL2glMb7K5Eby/Upbi82mqEUhPUNaBuCGPMXqd9yO68bzmbzcxS6cg==
+"@podlite/image@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@podlite/image/-/image-0.0.5.tgz#6a885a956ccec4e161ff8963fa7ba70a699bd6eb"
+  integrity sha512-RcppWX3HQ/NfdoLcsvaNa5aMI+0V0ndarp3Lx00amqYV5acUY3PP046bE9rzz8JaBXaJK/tEAFjiKBgMItG8dg==
   dependencies:
-    pod6 "0.0.36"
+    "@podlite/schema" "^0.0.4"
 
-"@podlite/schema@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@podlite/schema/-/schema-0.0.1.tgz#bd2122f8f239b6577322fe95fec53f291af16f4a"
-  integrity sha512-oHkxdR5LoUpAqO8PLlMG+euca/Am9WtWij40gnsw30zsHM2T913DQiwzwqGhpeQG4c5cqjP99z7H8FxrcwiXrQ==
+"@podlite/schema@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@podlite/schema/-/schema-0.0.4.tgz#8215c25e8c01be29e917ed5f875545a2975e5e56"
+  integrity sha512-Zzd8gmrUnunor6Du5cDNYbbU1Avb59ZCXtoyYxHO9juoPXqr8YWlOuOl1OQNzxtBmaGJcYHTBjlqLsWKdZbXpg==
   dependencies:
     ajv "^7.2.3"
     json-pointer "^0.6.1"
-    pod6 "0.0.36"
+    pod6 "0.0.38"
 
-"@podlite/to-jsx@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@podlite/to-jsx/-/to-jsx-0.0.4.tgz#0aa9588588cc4616de24322f1d7c07e0094a3685"
-  integrity sha512-XJV/BKKqtvo7XaXYCt+BNbAJ8GLOgmJdqfr9bw/mz5nFS0RQ4m94E7cfPjxROHsJkIzedyGDfLHPbviYxM1bMg==
+"@podlite/to-jsx@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@podlite/to-jsx/-/to-jsx-0.0.5.tgz#27c89baccd07ae3b00ee647fd7992ea77065f77e"
+  integrity sha512-3xris5eNG65RGVNoSEPNjHXsEGM+fBwyJkfuacJP2Ez+to07/4oEWgCHK5iyXHq42bM/UTczETi/y54gWGT9GA==
   dependencies:
-    "@podlite/diagram" "^0.0.4"
+    "@podlite/diagram" "^0.0.5"
     pod6 "0.0.38"
     react-is "^17.0.2"
 
@@ -7125,10 +7113,10 @@ merge2@^1.2.3:
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.3.0.tgz#5b366ee83b2f1582c48f87e47cf1a9352103ca81"
   integrity sha512-2j4DAdlBOkiSZIsaXk4mTE3sRS02yBHAtfy127xRV3bQUFqXkjHCHLW6Scv7DwNRbIWNHH8zpnz9zMaKXIdvYw==
 
-mermaid@^8.9.2:
-  version "8.9.2"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-8.9.2.tgz#40bb2052cc6c4feaf5d93a5e527a8d06d0bacea7"
-  integrity sha512-XWEaraDRDlHZexdeHSSr/MH4VJAOksRSPudchi69ecZJ7IUjjlzHsg32n4ZwJUh6lFO+NMYLHwHNNYUyxIjGPg==
+mermaid@8.10.1:
+  version "8.10.1"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-8.10.1.tgz#9573f702024e2173f4aa07d9b207d750507cf838"
+  integrity sha512-KxwKEJDKy303TQdz5TQMFb/4u+gUL21CefUMGOfuigDh9powcYaNmuJ5BkHmO0jB3Y1z2zlsuKvHZ2CusWH5+A==
   dependencies:
     "@braintree/sanitize-url" "^3.1.0"
     d3 "^5.7.0"
@@ -8176,25 +8164,20 @@ pnp-webpack-plugin@1.5.0:
   dependencies:
     ts-pnp "^1.1.2"
 
-pod6@0.0.36:
-  version "0.0.36"
-  resolved "https://registry.yarnpkg.com/pod6/-/pod6-0.0.36.tgz#fdf196cb01209689d8e681dc75fbed3c9a091e39"
-  integrity sha512-eR7b53ipYmMhCEzmYTo/1K17pSoSrrIJVi4/dJHHsRfmkL/0CDydIST9kEt1AxZBcsq0FYuuib9Zz6hZneXoEA==
-
 pod6@0.0.38:
   version "0.0.38"
   resolved "https://registry.yarnpkg.com/pod6/-/pod6-0.0.38.tgz#85a803a69066e4ce71493d98f73746d6277e7153"
   integrity sha512-Li0Fhyj++mazJLVt+yuWajljicWsKxaasKtLEEVggeV9DdAOgzbOQOOFaeFL2iKMmdK56eM8ookVVCN57tMEdQ==
 
-podlite@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/podlite/-/podlite-0.0.5.tgz#16986500a443967037b23064e4879cb1a2cd7705"
-  integrity sha512-0KcNg5X7a+MWFeTZYtnT68sJntiasJm5p6XaPa/s/0bgOZCGDLyoY5c5kHDv8yiv3O1dUt8Ph94gYyyko8E/9g==
+podlite@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/podlite/-/podlite-0.0.9.tgz#a9e6fd963f13656070672cfad1a61cf20b6fffc1"
+  integrity sha512-io6ExTK5oAh08IpahTsU0K6rF+ibnDoS6Jr6Xq5WMilEUelAr1779RKTE4nYdUL4u4AEqC0wlgyTv51s4ByXHg==
   dependencies:
-    "@podlite/diagram" "^0.0.1"
-    "@podlite/image" "^0.0.1"
-    "@podlite/schema" "^0.0.1"
-    pod6 "0.0.36"
+    "@podlite/diagram" "^0.0.5"
+    "@podlite/image" "^0.0.5"
+    "@podlite/schema" "^0.0.4"
+    pod6 "0.0.38"
     remark-parse "8.0.3"
     unified "9.2.0"
 
@@ -10872,10 +10855,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@~3.7.2:
-  version "3.7.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
-  integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
+typescript@4.2.4:
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
+  integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
 
 uglify-js@3.4.x:
   version "3.4.10"
