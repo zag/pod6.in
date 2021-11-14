@@ -4,7 +4,7 @@ import Editor, {ConverterResult} from '@podlite/editor-react/esm'
 import Podlite from '@podlite/to-jsx'
 import toast from "cogo-toast"
 import copy from "copy-to-clipboard"
-import { ImListNumbered } from 'react-icons/im'
+import { ImListNumbered, ImMagicWand } from 'react-icons/im'
 import {BsArrowsFullscreen, AiOutlineClear, AiOutlineLink} from 'react-icons/all'
 import { useHistory } from "react-router-dom"
 import { podlite as podlite_core } from "podlite";
@@ -12,10 +12,11 @@ import { plugin as DiagramPlugin } from '@podlite/diagram'
 
 import '@podlite/editor-react/lib/index.css'
 import '../node_modules/codemirror/lib/codemirror.css';
+import 'codemirror/addon/hint/show-hint';
+
 import './App.css';
 
 import { version, parse } from 'pod6'
-
 
 let deftext = 
 `=head1 Title
@@ -167,6 +168,8 @@ const App1: React.FC = () => {
 
     // reset text to template
     const [isChanged, setChanged ] = useState(false)
+    const [isAutocompleteOn, setAutocomplete ] = useState(true)
+
     const copyToClipboard = () => {
         copy(document.location.href);
         toast.success(`Url to this text copied to clipboard`, {
@@ -185,12 +188,15 @@ const App1: React.FC = () => {
             if ( window.confirm('Are you really sure?') ) { document.location.assign('/') }
             }}/>
         <AiOutlineLink onClick={ copyToClipboard}  className='iconOn' title="Copy url to this text"/>
+        <ImMagicWand onClick={ ()=>setAutocomplete(!isAutocompleteOn)}  className={ isAutocompleteOn ? 'iconOn' : 'iconOff' } title="toggle autocomplete for directives"/>
+        
     </div>
 
     <Editor 
         isLineNumbers= {isLineNumbers}
         isPreviewModeEnabled = {isFullScreenPreview}
         isControlled = {true}
+        isAutoComplete={isAutocompleteOn}
         content={query}  
         onChangeSource = { (content:string)=>{
             setQuery(content)

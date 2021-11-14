@@ -11,7 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "codemirror": "^5.60.0",
-    "podlite": "0.0.9",
+    "podlite": "^0.0.11",
     "react": "16.13.1",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
@@ -39,14 +39,12 @@
     ]
   },
   "devDependencies": {
-    "@podlite/editor-react": "0.0.8",
-    "@podlite/to-jsx": "0.0.5",
-    "@types/react-codemirror": "^1.0.3",
+    "@podlite/editor-react": "^0.0.11",
+    "@podlite/to-jsx": "^0.0.7",
     "@types/react-router-dom": "^5.1.7",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
-    "pod6": "0.0.38",
-    "react-codemirror2": "^7.2.1",
+    "pod6": "^0.0.41",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
   }
