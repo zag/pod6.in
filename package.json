@@ -47,5 +47,6 @@
     "pod6": "^0.0.41",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "packageManager": "yarn@3.1.0"
 }
