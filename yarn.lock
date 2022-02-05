@@ -1583,23 +1583,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/diagram@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@podlite/diagram@npm:0.0.9"
-  dependencies:
-    "@podlite/schema": 0.0.7
-    react-is: ^17.0.2
-  peerDependencies:
-    mermaid: "*"
-    react: "*"
-    react-is: "*"
-  checksum: 3476eee64e6f2b75d2a81f8527eae86a165af797ed3e768b0e5569ad8d0fd62659ac4c9f3f841864961edbf9341f16493f2719c23175ac10f8d9b58379b0ea8a
-  languageName: node
-  linkType: hard
-
-"@podlite/editor-react@npm:^0.0.12":
-  version: 0.0.12
-  resolution: "@podlite/editor-react@npm:0.0.12"
+"@podlite/editor-react@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "@podlite/editor-react@npm:0.0.13"
   dependencies:
     codemirror: 5.x
     react-codemirror2: ^7.2.1
@@ -1607,7 +1593,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: 2f3edaa8fbe711b2e9ea22f45c7169e8810338c80755399bcae0824a3b7150d9ced2afe8aa8c2c7c6291452bd7c8f2208ad45caf3b1317b5e6c2c80b728ecf39
+  checksum: c041700edf2cd8dac0a0af78d0b13a178425076a80fe2772bf475b824b964ec6dd7dd5720003752f9acc17205ee00e878af7abd1a4e1d8d9dd73acaa2901d423
   languageName: node
   linkType: hard
 
@@ -1632,11 +1618,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/to-jsx@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@podlite/to-jsx@npm:0.0.9"
+"@podlite/to-jsx@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@podlite/to-jsx@npm:0.0.10"
   dependencies:
-    "@podlite/diagram": ^0.0.9
+    "@podlite/diagram": ^0.0.10
     "@podlite/schema": 0.0.7
     pod6: 0.0.43
     react: ^16.12.0
@@ -1648,7 +1634,7 @@ __metadata:
     pod6: "*"
     react: "*"
     react-dom: "*"
-  checksum: ef2e0fc8309fa32a273db0291285e22747229be337ed5522862abb2faad0d451fcc673042cba0cb68d7be0a5a0afe293531a1cd89d83d0461188066ebd31d3b2
+  checksum: ef1d85ab8a3a05d6b0706942732473f4a5001dd24e587ff011c420d031de38ffccfd92bc0ef142ab559054339a1cfdd832c27973866a7b531674629d62773804
   languageName: node
   linkType: hard
 
@@ -3901,17 +3887,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"codemirror@npm:5.x":
+"codemirror@npm:5.x, codemirror@npm:^5.60.0":
   version: 5.65.1
   resolution: "codemirror@npm:5.65.1"
   checksum: 19f615f2c61fbae36bcc0b426aa9f485420b2d70c49092d69e86f49ab04b579512b642706f64a374c9bd56498edec641e16524ed3d2dbbd77ce12077e3bf2d14
-  languageName: node
-  linkType: hard
-
-"codemirror@npm:^5.60.0":
-  version: 5.63.3
-  resolution: "codemirror@npm:5.63.3"
-  checksum: f805b92f1aea98a6c21b0bf79263ccd428c7fe38aa664f4aa91397746ecba867389da3c0f8c605acbdc8c15590800fcb19b063fa3273e4733e42789abb5ff2ba
   languageName: node
   linkType: hard
 
@@ -10845,8 +10824,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pod6-editor@workspace:."
   dependencies:
-    "@podlite/editor-react": ^0.0.12
-    "@podlite/to-jsx": ^0.0.9
+    "@podlite/editor-react": ^0.0.13
+    "@podlite/to-jsx": ^0.0.10
     "@testing-library/jest-dom": ^4.2.4
     "@testing-library/react": ^9.3.2
     "@testing-library/user-event": ^7.1.2
@@ -10859,8 +10838,8 @@ __metadata:
     cogo-toast: ^4.2.3
     copy-to-clipboard: ^3.3.1
     pod6: 0.0.43
-    podlite: ^0.0.15
-    react: 16.13.1
+    podlite: ^0.0.16
+    react: ^16.14.0
     react-dom: ^16.12.0
     react-icons: ^4.2.0
     react-router-dom: ^5.2.0
@@ -10878,9 +10857,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"podlite@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "podlite@npm:0.0.15"
+"podlite@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "podlite@npm:0.0.16"
   dependencies:
     "@podlite/diagram": ^0.0.10
     "@podlite/image": ^0.0.8
@@ -10890,7 +10869,7 @@ __metadata:
     pod6: 0.0.43
   peerDependencies:
     pod6: "*"
-  checksum: a80551f5e4936849076ca687cf4bd858e759279f4558e35b35ddc09b8c5e20b7b0e031c73bf1561b8e37d78accfe78fbb050ebcd2d105e8212fe4af4e80cc815
+  checksum: 210f48b709b06870d9b34df2b0ca81929628b4b8d31c4b76b1e46d47d982b077c9e41f02cc293d6320d4d37eeeb931b392d64b15e36589565f075d6a2c8f4a4f
   languageName: node
   linkType: hard
 
@@ -12262,18 +12241,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:16.13.1":
-  version: 16.13.1
-  resolution: "react@npm:16.13.1"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    prop-types: ^15.6.2
-  checksum: 4508f4207caca6bef55736284cbf2ce18d2edfee4c1457fc0bb2086b34ed5bcf9b44acdb71e27574e73a5b5d4d093720b5b4ec0bf92bb89394ee3a0a7c42c2d4
-  languageName: node
-  linkType: hard
-
-"react@npm:^16.12.0":
+"react@npm:^16.12.0, react@npm:^16.14.0":
   version: 16.14.0
   resolution: "react@npm:16.14.0"
   dependencies:
