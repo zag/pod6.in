@@ -1583,9 +1583,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/editor-react@npm:^0.0.13":
-  version: 0.0.13
-  resolution: "@podlite/editor-react@npm:0.0.13"
+"@podlite/editor-react@npm:^0.0.14":
+  version: 0.0.14
+  resolution: "@podlite/editor-react@npm:0.0.14"
   dependencies:
     codemirror: 5.x
     react-codemirror2: ^7.2.1
@@ -1593,7 +1593,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: c041700edf2cd8dac0a0af78d0b13a178425076a80fe2772bf475b824b964ec6dd7dd5720003752f9acc17205ee00e878af7abd1a4e1d8d9dd73acaa2901d423
+  checksum: e6d5f530b5fd8c6e05dd9fd4ac33d3dc84ffcbde134099006e957fdb083402117bdbdb5a52fd1ba3021d45aa657483b23a3ef538fd538ae3c318d98363f10161
   languageName: node
   linkType: hard
 
@@ -10824,7 +10824,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pod6-editor@workspace:."
   dependencies:
-    "@podlite/editor-react": ^0.0.13
+    "@podlite/editor-react": ^0.0.14
     "@podlite/to-jsx": ^0.0.10
     "@testing-library/jest-dom": ^4.2.4
     "@testing-library/react": ^9.3.2
