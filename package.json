@@ -1,6 +1,6 @@
 {
   "name": "pod6-editor",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -11,7 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "codemirror": "^5.60.0",
-    "podlite": "^0.0.11",
+    "podlite": "^0.0.15",
     "react": "16.13.1",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
@@ -39,12 +39,12 @@
     ]
   },
   "devDependencies": {
-    "@podlite/editor-react": "^0.0.11",
-    "@podlite/to-jsx": "^0.0.7",
+    "@podlite/editor-react": "^0.0.12",
+    "@podlite/to-jsx": "^0.0.9",
     "@types/react-router-dom": "^5.1.7",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
-    "pod6": "^0.0.41",
+    "pod6": "0.0.43",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
   },
