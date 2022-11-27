@@ -9,6 +9,9 @@ import {BsArrowsFullscreen, AiOutlineClear, AiOutlineLink} from 'react-icons/all
 import { useHistory } from "react-router-dom"
 import { podlite as podlite_core } from "podlite";
 import { plugin as DiagramPlugin } from '@podlite/diagram'
+import { isNamedBlock} from '@podlite/schema/lib/ast-inerator';
+import { Node } from '@podlite/schema';
+
 
 import '@podlite/editor-react/lib/index.css'
 import '../node_modules/codemirror/lib/codemirror.css';
@@ -113,7 +116,9 @@ const App1: React.FC = () => {
 
     // wrap all elements and add line link info
     const wrapFunction = (node: Node, children) => {
-        if (typeof node !== 'string' && 'type' in node && 'location' in node) {
+        if (typeof node !== 'string' && 'type' in node && 'location' in node && node.type === 'block' && 
+        (['para','head','item', 'table', 'comment','nested','input','output','pod', 'caption'].includes(node.name)
+        || isNamedBlock(node.name))) {
             //@ts-ignore
             const line = node.location.start.line
             return <div key={line} className="line-src" data-line={line} id={`line-${line}`}>{children}</div>
