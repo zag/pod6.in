@@ -1,4 +1,4 @@
-# pod6-editor
+# podlite-online-editor
 # 0.1.15
 - update versions
 # 0.1.12

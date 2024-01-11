@@ -1,14 +1,9 @@
-//@ts-nocheck
+//ts-nocheck
 import React from 'react'
 import ReactDOMServer from 'react-dom/server';
 import { useMemo, useState, useCallback, useRef, useEffect }  from 'react'
-//@ts-ignore
-// import { md2ast } from 'podlite'
-//@ts-ignore
-import toAny  from 'pod6/built/exportAny'
-//@ts-ignore
 import {isValidElementType} from  'react-is'
-import { parse} from 'pod6'
+import { version, toAny, parse } from '@podlite/schema';
 import path from 'path';
 // import { parseToAst } from './make-ast';
 let i_key_i = 0;

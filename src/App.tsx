@@ -1,16 +1,17 @@
 import React from 'react';
 import Editor, {ConverterResult} from '@podlite/editor-react/esm'
-
+// @ts-ignore
 import Podlite from '@podlite/to-jsx'
 import toast from "cogo-toast"
 import copy from "copy-to-clipboard"
 import { ImListNumbered, ImMagicWand } from 'react-icons/im'
-import {BsArrowsFullscreen, AiOutlineClear, AiOutlineLink} from 'react-icons/all'
+import { AiOutlineClear, AiOutlineLink} from 'react-icons/ai'
+import { BsArrowsFullscreen } from "react-icons/bs";
 import { useHistory } from "react-router-dom"
 import { podlite as podlite_core } from "podlite";
 import { plugin as DiagramPlugin } from '@podlite/diagram'
 import { isNamedBlock} from '@podlite/schema/lib/ast-inerator';
-import { Node } from '@podlite/schema';
+import { version, parse,  Node } from '@podlite/schema';
 
 
 import '@podlite/editor-react/lib/index.css'
@@ -18,8 +19,6 @@ import '../node_modules/codemirror/lib/codemirror.css';
 import 'codemirror/addon/hint/show-hint';
 
 import './App.css';
-
-import { version, parse } from 'pod6'
 
 let deftext = 
 `=head1 Title
@@ -115,7 +114,7 @@ const App1: React.FC = () => {
     const [isFullScreenPreview, setFullScreenPreview] = useState(isFullscreenByDefault)
 
     // wrap all elements and add line link info
-    const wrapFunction = (node: Node, children) => {
+    const wrapFunction = (node: any, children) => {
         if (typeof node !== 'string' && 'type' in node && 'location' in node && node.type === 'block' && 
         (['para','head','item', 'table', 'comment','nested','input','output','pod', 'caption'].includes(node.name)
         || isNamedBlock(node.name))) {
@@ -185,7 +184,7 @@ const App1: React.FC = () => {
     <div style={{  'textAlign': 'left',
                     'margin': '0em 1em',
                     }}>
-        <h1 className="title">pod6 online editor (<a target="_blank" rel="noopener noreferrer" href="https://github.com/zag/js-pod6">{version}</a>)</h1>
+        <h1 className="title"><a href='https://podlite.org' target='_blank'>Podlite</a> online editor (<a target="_blank" rel="noopener noreferrer" href="https://github.com/podlite/podlite/tree/main/packages/podlite-schema">{version}</a>)</h1>
         <ImListNumbered className={ isLineNumbers ? 'iconOn' : 'iconOff' } title="toggle line numbers" onClick={()=>setLineNumbers(!isLineNumbers)}/>
         <BsArrowsFullscreen className={ isFullScreenPreview ? 'iconOn' : 'iconOff' } title="Toggle fullscreen" onClick={()=>setFullScreenPreview(!isFullScreenPreview)}/>
         <AiOutlineClear className={ isChanged ? 'iconOn' : 'iconOff' } title="Reset text to template" onClick={()=>{ 

@@ -1,5 +1,5 @@
 {
-  "name": "pod6-editor",
+  "name": "Podlite / pod6 - online editor",
   "version": "0.1.16",
   "private": true,
   "dependencies": {
@@ -11,10 +11,10 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "codemirror": "^5.60.0",
-    "podlite": "^0.0.21",
+    "podlite": "^0.0.25",
     "react": "^16.14.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "^5.0.1",
     "typescript": "4.2.4"
   },
   "scripts": {
@@ -39,12 +39,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@podlite/editor-react": "^0.0.16",
     "@podlite/to-jsx": "^0.0.14",
     "@types/react-router-dom": "^5.1.7",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
-    "pod6": "^0.0.48",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
   },
