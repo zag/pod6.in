@@ -2559,22 +2559,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/diagram@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "@podlite/diagram@npm:0.0.14"
-  dependencies:
-    "@podlite/schema": 0.0.10
-    mermaid: 8.12.1
-    react-is: ^17.0.2
-  peerDependencies:
-    mermaid: "*"
-    react: "*"
-    react-dom: "*"
-    react-is: "*"
-  checksum: 8ae5664ff7169ee265bbaf5f39e1fd3cfe81fb7281eaf36e3ea7203e16d98cd8f45ca8c6ab17fa75db3054a0761120e8314ca9b354929bb512e5b3841704f897
-  languageName: node
-  linkType: hard
-
 "@podlite/diagram@npm:^0.0.16":
   version: 0.0.16
   resolution: "@podlite/diagram@npm:0.0.16"
@@ -2591,9 +2575,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/editor-react@npm:^0.0.16":
-  version: 0.0.16
-  resolution: "@podlite/editor-react@npm:0.0.16"
+"@podlite/editor-react@npm:^0.0.18":
+  version: 0.0.18
+  resolution: "@podlite/editor-react@npm:0.0.18"
   dependencies:
     codemirror: 5.x
     react-codemirror2: ^7.2.1
@@ -2601,7 +2585,7 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0
     react-dom: ^16.0.0 || ^17.0.0
-  checksum: 0757845435ce7ff02eaf0abe79703e32ae640f06adf37beee9cbb1d56c1583134bb47869d3c22fdfed1d424abaefa5ec029f4d17b639754c11e40b769c9fa50e
+  checksum: f4a59eb16f06d53ba23d8ecdba07c7f2b2cf733e16e4fd2b06eb00d2d087aaed01b2c6f9d786be0bcc9055f38b47bbda55b5a3bae174b3935e389beaf46a399d
   languageName: node
   linkType: hard
 
@@ -2632,18 +2616,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/schema@npm:0.0.10":
-  version: 0.0.10
-  resolution: "@podlite/schema@npm:0.0.10"
-  dependencies:
-    ajv: ^7.2.3
-    json-pointer: ^0.6.1
-    nanoid: 3.1.30
-    pod6: ^0.0.48
-  checksum: b519d3ec48423b0345667e26f825bdd856fd5bc6f99c0dca8e234f064b9156daf5f66904edb278bf23fc4a199befa6bdbe5522884277126278d7f83dbb9e7bb1
-  languageName: node
-  linkType: hard
-
 "@podlite/schema@npm:0.0.12, @podlite/schema@npm:^0.0.12":
   version: 0.0.12
   resolution: "@podlite/schema@npm:0.0.12"
@@ -2656,21 +2628,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/to-jsx@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "@podlite/to-jsx@npm:0.0.14"
+"@podlite/to-jsx@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@podlite/to-jsx@npm:0.0.16"
   dependencies:
-    "@podlite/diagram": ^0.0.14
-    "@podlite/schema": 0.0.10
-    pod6: ^0.0.48
+    "@podlite/diagram": ^0.0.16
+    "@podlite/schema": 0.0.12
     react-is: ^17.0.2
   peerDependencies:
     "@podlite/diagram": "*"
     "@podlite/schema": "*"
-    pod6: "*"
     react: ^16.0.0 || ^17.0.0
     react-dom: ^16.0.0 || ^17.0.0
-  checksum: 826d2a5a535b26d874beb791eba532dd24fffe77b736528b629070ebc9c63eeaabb73afbf4da848a1c049443b425ea45e633e0ddea000da1c4caf1d08ccd2e00
+  checksum: 99082ba56250ab75a521cd285318de6294c0d27653a518bcbe9a22161bf463fd2b20fc3bacae8a9769bc8ee270220c92ef3ab075c2798cc9aecdc89806b98cfb
   languageName: node
   linkType: hard
 
@@ -11663,45 +11633,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pod6-editor@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "pod6-editor@workspace:."
-  dependencies:
-    "@babel/plugin-proposal-private-property-in-object": ^7.21.11
-    "@podlite/editor-react": ^0.0.16
-    "@podlite/to-jsx": ^0.0.14
-    "@testing-library/jest-dom": ^4.2.4
-    "@testing-library/react": ^9.3.2
-    "@testing-library/user-event": ^7.1.2
-    "@types/jest": ^24.0.0
-    "@types/node": ^12.0.0
-    "@types/react": ^16.9.0
-    "@types/react-dom": ^16.9.0
-    "@types/react-router-dom": ^5.1.7
-    codemirror: ^5.60.0
-    cogo-toast: ^4.2.3
-    copy-to-clipboard: ^3.3.1
-    podlite: ^0.0.25
-    react: ^16.14.0
-    react-dom: ^16.12.0
-    react-icons: ^4.2.0
-    react-router-dom: ^5.2.0
-    react-scripts: ^5.0.1
-    typescript: 4.2.4
-  languageName: unknown
-  linkType: soft
-
-"pod6@npm:^0.0.48":
-  version: 0.0.48
-  resolution: "pod6@npm:0.0.48"
-  dependencies:
-    events: ^3.1.0
-  bin:
-    pod6html: bin/pod6html
-  checksum: 737ba5322bfc2190edd70c60dbe718a886b0e5afd575e2205d067e1ed1b146bcb99eb53f12ee604eb288ea7cc6c6f6d442a589f506f67419405916194d9f66a8
-  languageName: node
-  linkType: hard
-
 "podlite@npm:^0.0.25":
   version: 0.0.25
   resolution: "podlite@npm:0.0.25"
@@ -13497,6 +13428,34 @@ __metadata:
   checksum: 6a2bf167b3587d4df709b37d149ad0300692cc5deb510f89ac7bdc77c8738c9546ae3de9322b0968e1ed2b0e984571f5f55aae28fa7de4cfcb1bc5402a4e2be6
   languageName: node
   linkType: hard
+
+"root-workspace-0b6124@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-0b6124@workspace:."
+  dependencies:
+    "@babel/plugin-proposal-private-property-in-object": ^7.21.11
+    "@podlite/editor-react": ^0.0.18
+    "@podlite/to-jsx": ^0.0.16
+    "@testing-library/jest-dom": ^4.2.4
+    "@testing-library/react": ^9.3.2
+    "@testing-library/user-event": ^7.1.2
+    "@types/jest": ^24.0.0
+    "@types/node": ^12.0.0
+    "@types/react": ^16.9.0
+    "@types/react-dom": ^16.9.0
+    "@types/react-router-dom": ^5.1.7
+    codemirror: ^5.60.0
+    cogo-toast: ^4.2.3
+    copy-to-clipboard: ^3.3.1
+    podlite: ^0.0.25
+    react: ^16.14.0
+    react-dom: ^16.12.0
+    react-icons: ^4.2.0
+    react-router-dom: ^5.2.0
+    react-scripts: ^5.0.1
+    typescript: 4.2.4
+  languageName: unknown
+  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0

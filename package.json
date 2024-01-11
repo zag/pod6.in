@@ -1,5 +1,4 @@
 {
-  "name": "Podlite / pod6 - online editor",
   "version": "0.1.16",
   "private": true,
   "dependencies": {
@@ -40,8 +39,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@podlite/editor-react": "^0.0.16",
-    "@podlite/to-jsx": "^0.0.14",
+    "@podlite/editor-react": "^0.0.18",
+    "@podlite/to-jsx": "^0.0.16",
     "@types/react-router-dom": "^5.1.7",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
