@@ -17,15 +17,21 @@ It will also be useful to familiarize yourself with the Podlite markup.
 In case of error, please, check [Podlite specifiaction](https://podlite.org/specification) at first.
 Please, fill issue [github.com/podlite/podlite/issues](https://github.com/podlite/podlite/issues) and include Podlite text and any Technical details.
 
-## Useful links
 
-📖 *Project site*: [podlite.org](https://podlite.org)
-📌 *Github*: [github.com/podlite](https://github.com/podlite/)  🤩
+📖 _Project site_: [podlite.org](https://podlite.org)
 
-🖥️ *Online editor*: [pod6.in](https://pod6.in/)
-🖥️ *Desktop editor/viewer*: [github.com/podlite/podlite-desktop](https://github.com/podlite/podlite-desktop) - the viewer and editor of `.podlite` and `.pod6` files for Windows, Linux and Mac.
-📚 *Podlite for web* - static site generator: [github.com/podlite/podlite-web](https://github.com/podlite/podlite-web)
+📌 _Github_: [github.com/podlite](https://github.com/podlite/) 🤩
 
+🖥️ _Online editor_: [pod6.in](https://pod6.in/)
 
-With best regards,
-Alex
+🖥️ _Desktop editor/viewer_: [github.com/podlite/podlite-desktop](https://github.com/podlite/podlite-desktop) - the viewer and editor of `.podlite` and `.pod6` files for Windows, Linux and Mac.
+
+📚 _Podlite for web_ - static site generator: [github.com/podlite/podlite-web](https://github.com/podlite/podlite-web)
+
+## AUTHOR
+
+Copyright (c) 2021-2024 Aliaksandr Zahatski
+
+## License
+
+Released under a MIT License.
