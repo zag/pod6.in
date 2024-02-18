@@ -1,5 +1,10 @@
 # podlite-online-editor
 
+# 0.1.19
+
+- add text search (cmd-F)
+- update versions
+
 # 0.1.17
 
 - update versions

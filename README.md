@@ -17,7 +17,6 @@ It will also be useful to familiarize yourself with the Podlite markup.
 In case of error, please, check [Podlite specifiaction](https://podlite.org/specification) at first.
 Please, fill issue [github.com/podlite/podlite/issues](https://github.com/podlite/podlite/issues) and include Podlite text and any Technical details.
 
-
 📖 _Project site_: [podlite.org](https://podlite.org)
 
 📌 _Github_: [github.com/podlite](https://github.com/podlite/) 🤩
