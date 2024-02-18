@@ -15,6 +15,7 @@ import { version, parse, Node } from '@podlite/schema'
 
 import '@podlite/editor-react/lib/index.css'
 import '../node_modules/codemirror/lib/codemirror.css'
+import '../node_modules/codemirror/addon/dialog/dialog.css'
 import 'codemirror/addon/hint/show-hint'
 
 import './App.css'
