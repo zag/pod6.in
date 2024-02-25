@@ -2,6 +2,10 @@
 
 # 0.1.19
 
+- fix =toc
+
+# 0.1.19
+
 - add text search (cmd-F)
 - update versions
 

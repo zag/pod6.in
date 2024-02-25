@@ -1,5 +1,5 @@
 {
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Online editor for Podlite - a block-based lightweight markup language",
   "private": true,
   "dependencies": {
@@ -51,8 +51,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
-    "@podlite/editor-react": "^0.0.22",
-    "@podlite/to-jsx": "^0.0.20",
+    "@podlite/editor-react": "^0.0.23",
+    "@podlite/to-jsx": "^0.0.21",
     "@types/react-router-dom": "^5.1.7",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",

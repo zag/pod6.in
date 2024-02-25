@@ -13,6 +13,7 @@ import { plugin as DiagramPlugin } from '@podlite/diagram'
 import { isNamedBlock } from '@podlite/schema'
 import { version, parse, Node } from '@podlite/schema'
 
+
 import '@podlite/editor-react/lib/index.css'
 import '../node_modules/codemirror/lib/codemirror.css'
 import '../node_modules/codemirror/addon/dialog/dialog.css'
@@ -139,7 +140,6 @@ const App1: React.FC = () => {
   }
 
   const onConvertSource = (text: string): ConverterResult => {
-    console.log({ version })
 
     if (showTree) {
       const previewCode = (

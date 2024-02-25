@@ -75,10 +75,8 @@ export function AstToReact({ file, plugins = {} }: { file: string; plugins?: any
 
     rules[ruleName] = (writer, processor) => (node, ctx, interator) => {
       if (['Dia', 'para', ':para'].includes(ruleName)) {
-        console.log('Dia here!')
         const { content, location, ...attr } = node
         const key = node.type ? getIdForNode(node) : ++i_key_i
-        console.log({ key, node })
         const children = content ? interator(content, { ...ctx }) : undefined
         return makeElement({ ...attr, content, key, children, line: location?.start.line }, children)
       }
@@ -95,7 +93,6 @@ export function AstToReact({ file, plugins = {} }: { file: string; plugins?: any
   })
   const FirstLevel = ({ node }) => {
     const res = useMemo(() => {
-      console.log('1')
       return toAny({ processor: 1 })
         .use({
           '*:*': (writer, processor) => (node, ctx, interator) => {
