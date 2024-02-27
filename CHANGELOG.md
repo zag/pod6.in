@@ -1,6 +1,10 @@
 # podlite-online-editor
 
-# 0.1.19
+# 0.1.21
+
+- update deps
+
+# 0.1.20
 
 - fix =toc
 
