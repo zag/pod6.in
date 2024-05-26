@@ -1,5 +1,10 @@
 # podlite-online-editor
 
+# 0.1.22
+
+- update deps
+- host mathjax files
+
 # 0.1.21
 
 - update deps

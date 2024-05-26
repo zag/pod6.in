@@ -1,5 +1,7 @@
 import React from 'react'
 import Editor, { ConverterResult } from '@podlite/editor-react'
+import { MathJaxProvider } from '@podlite/formula'
+import '@podlite/formula/lib/default.css'
 // @ts-ignore
 import Podlite from '@podlite/to-jsx'
 import toast from 'cogo-toast'
@@ -21,26 +23,39 @@ import 'codemirror/addon/hint/show-hint'
 
 import './App.css'
 
-let deftext = `=head1 Title
+let deftext = ` 
+=for toc :caption('Table of contents')
+  head1, head2, head3 
+  
+=head1 Title
 =head2 Subtitle
 
 =for code :allow(B)
 This I<is> a B<text>
 
-  =alias PROGNAME    Earl Irradiatem Evermore
-  =alias VENDOR      4D Kingdoms
-  =alias TERMS_URLS  =item L<http://www.4dk.com/eie>
-  =                  =item L<http://www.4dk.co.uk/eie.io/>
-  =                  =item L<http://www.fordecay.ch/canttouchthis>
-  
-  The use of A<PROGNAME> is U<subject> to the terms and conditions
-  laid out by A<VENDOR>, as specified at:
-  
-       A<TERMS_URLS>
 
-=para
 Space stations feature hydroponic gardens B<N<Plants grow without soil,
 using mineral nutrient solutions.>>, a necessity for long-term missions.
+
+This is an inline formulas example: F< y = \\sqrt{3x-1}+(1+x)^2 >
+
+=for formula :caption('The Cauchy-Schwarz Inequality')
+   \\left( \\sum_{k=1}^n a_k b_k \\right)^2 \\leq \\left( \\sum_{k=1}^n a_k^2 \\right) \\left( \\sum_{k=1}^n b_k^2 \\right)
+
+=begin markdown
+
+## Header inside markdown
+  
+$$
+\\operatorname{ker} f=\\{g\\in G:f(g)=e_{H}\\}{\\mbox{.}}
+$$
+
+
+ * list 1
+   * level 2
+
+=end markdown
+
 
 
 Options B<are>:
@@ -72,6 +87,27 @@ I<Table>
         The Bowler      Carol Pinnsler    Haunted bowling ball
 
 =end table
+
+=begin Mermaid :caption('Diagram with caption')
+graph LR
+        A-->B
+        B-->C
+        C-->A
+        D-->C
+=end Mermaid
+
+
+  =alias PROGNAME    Earl Irradiatem Evermore
+  =alias VENDOR      4D Kingdoms
+  =alias TERMS_URLS  =item L<http://www.4dk.com/eie>
+  =                  =item L<http://www.4dk.co.uk/eie.io/>
+  =                  =item L<http://www.fordecay.ch/canttouchthis>
+  
+  The use of A<PROGNAME> is U<subject> to the terms and conditions
+  laid out by A<VENDOR>, as specified at:
+  
+       A<TERMS_URLS>
+
 `
 const { useState, useEffect } = React
 
@@ -244,7 +280,9 @@ const App1: React.FC = () => {
           title="toggle autocomplete for directives"
         />
       </div>
-
+     <MathJaxProvider src="/static/mathjax-3.2.2/es5/tex-chtml-full.js">
+    
+  
       <Editor
         isLineNumbers={isLineNumbers}
         isPreviewModeEnabled={isFullScreenPreview}
@@ -257,6 +295,7 @@ const App1: React.FC = () => {
         sourceType={'pod6'}
         onConvertSource={onConvertSource}
       />
+      </MathJaxProvider>
     </div>
   )
 }
