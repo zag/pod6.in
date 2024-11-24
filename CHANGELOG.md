@@ -1,5 +1,9 @@
 # podlite-online-editor
 
+# 0.1.23
+
+- update deps
+
 # 0.1.22
 
 - update deps
