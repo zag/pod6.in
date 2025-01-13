@@ -7,7 +7,7 @@ import Podlite from '@podlite/to-jsx'
 import toast from 'cogo-toast'
 import copy from 'copy-to-clipboard'
 import { ImListNumbered, ImMagicWand } from 'react-icons/im'
-import { AiOutlineClear, AiOutlineLink } from 'react-icons/ai'
+import { AiOutlineClear, AiOutlineLink, AiFillFormatPainter } from 'react-icons/ai'
 import { BsArrowsFullscreen } from 'react-icons/bs'
 import { useHistory } from 'react-router-dom'
 import { podlite as podlite_core } from 'podlite'
@@ -21,6 +21,7 @@ import '../node_modules/codemirror/lib/codemirror.css'
 import '../node_modules/codemirror/addon/dialog/dialog.css'
 import 'codemirror/addon/hint/show-hint'
 
+
 import './App.css'
 
 let deftext = ` 
@@ -30,33 +31,31 @@ let deftext = `
 =head1 Title
 =head2 Subtitle
 
-=for code :allow(B)
-This I<is> a B<text>
-
-
-Space stations feature hydroponic gardens B<N<Plants grow without soil,
-using mineral nutrient solutions.>>, a necessity for long-term missions.
+Space stations feature I<hydroponic> gardens N<Plants grow without soil,
+using mineral nutrient solutions.>, a necessity for B<long-term> missions.
 
 This is an inline formulas example: F< y = \\sqrt{3x-1}+(1+x)^2 >
 
 =for formula :caption('The Cauchy-Schwarz Inequality')
    \\left( \\sum_{k=1}^n a_k b_k \\right)^2 \\leq \\left( \\sum_{k=1}^n a_k^2 \\right) \\left( \\sum_{k=1}^n b_k^2 \\right)
 
-=begin markdown
+See this L<link|https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality>
 
-## Header inside markdown
-  
-$$
-\\operatorname{ker} f=\\{g\\in G:f(g)=e_{H}\\}{\\mbox{.}}
-$$
+=head2 Diagrams
 
+=begin Mermaid :caption('Diagram with caption')
+graph LR
+        A-->B
+        B-->C
+        C-->A
+        D-->C
+=end Mermaid
 
- * list 1
-   * level 2
+=begin comment
+This is a commented text. 
+=end comment
 
-=end markdown
-
-
+=head2 Lists 
 
 Options B<are>:
 
@@ -70,7 +69,39 @@ Options B<are>:
 =item2     Gas
 =item2     I<Chocolate>
 
-I<Table>
+=head2 Tables
+
+=table
+    Constants           1
+    Variables           10
+    Subroutines         33
+    Everything else     57
+
+=for table
+    mouse    | mice
+    horse    | horses
+    elephant | elephants
+
+=table
+    Animal | Legs |    Eats
+    =======================
+    Zebra  +   4  + Cookies
+    Human  +   2  +   Pizza
+    Shark  +   0  +    Fish
+
+=table
+    X | O |
+   ---+---+---
+      | X | O
+   ---+---+---
+      |   | X
+
+=table
+    X   O
+   ===========
+        X   O
+   ===========
+            X
 
 =begin table :caption('Super table!')
                         Secret
@@ -88,13 +119,19 @@ I<Table>
 
 =end table
 
-=begin Mermaid :caption('Diagram with caption')
-graph LR
-        A-->B
-        B-->C
-        C-->A
-        D-->C
-=end Mermaid
+=begin markdown
+
+## Header inside markdown
+  
+$$
+\\operatorname{ker} f=\\{g\\in G:f(g)=e_{H}\\}{\\mbox{.}}
+$$
+
+
+ * list 1
+   * level 2
+
+=end markdown
 
 
   =alias PROGNAME    Earl Irradiatem Evermore
@@ -107,6 +144,9 @@ graph LR
   laid out by A<VENDOR>, as specified at:
   
        A<TERMS_URLS>
+
+=for code :allow(B)
+This I<is> a B<text>
 
 `
 const { useState, useEffect } = React
@@ -229,6 +269,7 @@ const App1: React.FC = () => {
   // reset text to template
   const [isChanged, setChanged] = useState(false)
   const [isAutocompleteOn, setAutocomplete] = useState(true)
+  const [isHighlightSourceOn, setHighlightSource] = useState(true)
 
   const copyToClipboard = () => {
     copy(document.location.href)
@@ -279,6 +320,12 @@ const App1: React.FC = () => {
           className={isAutocompleteOn ? 'iconOn' : 'iconOff'}
           title="toggle autocomplete for directives"
         />
+        <AiFillFormatPainter
+          onClick={() => setHighlightSource(!isHighlightSourceOn)}
+          className={isHighlightSourceOn ? 'iconOn' : 'iconOff'}
+          title="toggle highlighting mode for source"
+        />
+        
       </div>
      <MathJaxProvider src="/static/mathjax-3.2.2/es5/tex-chtml-full.js">
     
@@ -294,6 +341,8 @@ const App1: React.FC = () => {
         }}
         sourceType={'pod6'}
         onConvertSource={onConvertSource}
+        isHighlightSource={isHighlightSourceOn}
+        // isDarkTheme={true}
       />
       </MathJaxProvider>
     </div>
