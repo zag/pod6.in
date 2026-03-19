@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import { BrowserRouter as Router } from 'react-router-dom'
+
+// init
+// try to get predefined source from html
+const tmpl_node = document.getElementById('template')
+const tmpl = tmpl_node?.textContent || tmpl_node?.innerText || null
+
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  tmpl ? <App source={tmpl} viewerMode={!!tmpl_node} /> : <App />,
   document.getElementById('root'),
 )
 

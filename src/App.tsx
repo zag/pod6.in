@@ -1,33 +1,29 @@
 import React from 'react'
-import Editor, { ConverterResult } from '@podlite/editor-react'
+import PodliteEditor, { ConverterResult, HighlightedCode } from '@podlite/editor-react'
 import { MathJaxProvider } from '@podlite/formula'
 import '@podlite/formula/lib/default.css'
 // @ts-ignore
 import Podlite from '@podlite/to-jsx'
 import toast from 'cogo-toast'
 import copy from 'copy-to-clipboard'
-import { ImListNumbered, ImMagicWand } from 'react-icons/im'
-import { AiOutlineClear, AiOutlineLink, AiFillFormatPainter } from 'react-icons/ai'
-import { BsArrowsFullscreen } from 'react-icons/bs'
-import { useHistory } from 'react-router-dom'
+import { ImMagicWand } from 'react-icons/im'
+import { AiOutlineClear, AiOutlineLink, AiOutlineCamera } from 'react-icons/ai'
+import { BsArrowsFullscreen, BsCardImage, BsSun, BsMoon } from 'react-icons/bs'
+// @ts-ignore
+import domtoimage from 'dom-to-image-more'
 import { podlite as podlite_core } from 'podlite'
 import { plugin as DiagramPlugin } from '@podlite/diagram'
 import { isNamedBlock } from '@podlite/schema'
-import { version, parse, Node } from '@podlite/schema'
+import { version } from '@podlite/schema'
 
-
-import '@podlite/editor-react/lib/index.css'
-import '../node_modules/codemirror/lib/codemirror.css'
-import '../node_modules/codemirror/addon/dialog/dialog.css'
-import 'codemirror/addon/hint/show-hint'
-
-
+import '@podlite/editor-react/esm/Editor.css'
+import '@podlite/editor-react/esm/podlite-vars.css'
 import './App.css'
 
-let deftext = ` 
+let deftext = `
 =for toc :caption('Table of contents')
-  head1, head2, head3 
-  
+  head1, head2, head3
+
 =head1 Title
 =head2 Subtitle
 
@@ -52,10 +48,10 @@ graph LR
 =end Mermaid
 
 =begin comment
-This is a commented text. 
+This is a commented text.
 =end comment
 
-=head2 Lists 
+=head2 Lists
 
 Options B<are>:
 
@@ -122,7 +118,7 @@ Options B<are>:
 =begin markdown
 
 ## Header inside markdown
-  
+
 $$
 \\operatorname{ker} f=\\{g\\in G:f(g)=e_{H}\\}{\\mbox{.}}
 $$
@@ -139,10 +135,10 @@ $$
   =alias TERMS_URLS  =item L<http://www.4dk.com/eie>
   =                  =item L<http://www.4dk.co.uk/eie.io/>
   =                  =item L<http://www.fordecay.ch/canttouchthis>
-  
+
   The use of A<PROGNAME> is U<subject> to the terms and conditions
   laid out by A<VENDOR>, as specified at:
-  
+
        A<TERMS_URLS>
 
 =for code :allow(B)
@@ -151,48 +147,61 @@ This I<is> a B<text>
 `
 const { useState, useEffect } = React
 
-const App1: React.FC = () => {
-  const [showTree] = useState(false)
-  const [isLineNumbers, setLineNumbers] = useState(false)
-  let history = useHistory()
+interface AppProps {
+  source?: string
+  viewerMode?: boolean
+}
 
-  // URL state management
-  type GetHashStringParams = { p: string; f: boolean }
-  const pushHistory = (args: GetHashStringParams) => {
-    const result = getHashString(args)
-    if (history) {
-      history.push({ hash: result })
-    }
+const App1: React.FC<AppProps> = ({ source, viewerMode = false }) => {
+  // URL state management (native hash, no react-router)
+  type HashState = { p: string | null; f: boolean }
+
+  const getStateFromHash = (): HashState => {
+    const hash = window.location.hash.slice(1)
+    const params = new URLSearchParams(hash)
+    const p = params.get('p')
+    const f = Boolean(params.get('f'))
+    return { p, f }
   }
 
-  const getHashString = ({ p: planText, f: isFullScreen }: GetHashStringParams): string => {
+  const pushHash = (state: HashState) => {
     const params = new URLSearchParams()
-    planText ? params.append('p', planText) : params.delete('p')
-    isFullScreen ? params.append('f', '1') : params.delete('f')
-    return params.toString()
+    if (state.p) params.set('p', state.p)
+    if (state.f) params.set('f', '1')
+    window.location.hash = params.toString()
   }
 
-  const getStateFromHash = (): GetHashStringParams => {
-    if (history && history.location) {
-      const params = new URLSearchParams(history.location.hash)
-      const p = params.get('#p') || params.get('p')
-      const f = Boolean(params.get('f') || params.get('#f'))
-      return { p, f }
-    } else {
-      return { p: null, f: null }
-    }
-  }
-  // URL state management
+  const modeView = viewerMode ? true : false
 
-  let default_text = getStateFromHash().p
-  let isFullscreenByDefault = getStateFromHash().f
+  let default_text = source || getStateFromHash().p
+  let isFullscreenByDefault = viewerMode ? modeView : getStateFromHash().f
 
   const [query, setQuery] = useState(default_text || deftext)
-
   const [isFullScreenPreview, setFullScreenPreview] = useState(isFullscreenByDefault)
+  const [isChanged, setChanged] = useState(false)
+  const [isAutocompleteOn, setAutocomplete] = useState(true)
+  const [isCardMode, setCardMode] = useState(false)
+  const [cardTitle, setCardTitle] = useState('snippet.podlite')
+  const cardRef = React.useRef<HTMLDivElement>(null)
+  const [isDarkTheme, setDarkTheme] = useState(
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  )
+
+  useEffect(() => {
+    document.body.setAttribute('data-color-mode', isDarkTheme ? 'dark' : 'light')
+  }, [isDarkTheme])
+
+  // Calculate editor height: viewport minus toolbar
+  const toolbarHeight = viewerMode ? 0 : 40
+  const [editorHeight, setEditorHeight] = useState(window.innerHeight - toolbarHeight)
+  useEffect(() => {
+    const onResize = () => setEditorHeight(window.innerHeight - toolbarHeight)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [toolbarHeight])
 
   // wrap all elements and add line link info
-  const wrapFunction = (node: any, children) => {
+  const wrapFunction = (node: any, children: any) => {
     if (
       typeof node !== 'string' &&
       'type' in node &&
@@ -215,28 +224,23 @@ const App1: React.FC = () => {
     }
   }
 
-  const onConvertSource = (text: string): ConverterResult => {
-
-    if (showTree) {
-      const previewCode = (
-        <div className=" right">
-          <pre>
-            <code className="right" style={{ textAlign: 'left' }}>
-              {JSON.stringify(parse(text), null, 2)}
-            </code>
-          </pre>
-        </div>
-      )
-      return { result: previewCode }
+  const codeHighlightPlugins = (makeComponent: any) => {
+    const mkComponent = (src: any) => (writer: any, processor: any) => (node: any, ctx: any, interator: any) => {
+      return makeComponent(src, node, 'content' in node ? interator(node.content, { ...ctx }) : [], ctx)
     }
+    const hcode = mkComponent(({ children, key, ...node }: any, ctx: any) => (
+      <HighlightedCode node={node} keyProp={key} ctx={ctx}>
+        {children}
+      </HighlightedCode>
+    ))
+    return {
+      ':code': hcode,
+      code: hcode,
+    }
+  }
 
-    pushHistory({
-      p: text,
-      f: isFullScreenPreview,
-    })
-
-    setChanged(true)
-
+  const makePreview = (text: string): ConverterResult => {
+    // Side effects moved to onChange to avoid setState during render
     let podlite = podlite_core({ importPlugins: true }).use({
       Diagram: DiagramPlugin,
     })
@@ -244,32 +248,120 @@ const App1: React.FC = () => {
     const asAst = podlite.toAstResult(tree)
 
     //@ts-ignore
-    return { result: <Podlite wrapElement={wrapFunction} tree={asAst} />, errors: asAst.errors }
+    return { result: <Podlite wrapElement={wrapFunction} plugins={codeHighlightPlugins} tree={asAst} />, errors: asAst.errors }
   }
 
-  useEffect(() => {
-    pushHistory({
-      p: getStateFromHash().p,
-      f: isFullScreenPreview,
-    })
-  }, [isFullScreenPreview])
+  // Syntax highlight Podlite source code for card view (One Dark Pro palette, high contrast)
+  const highlightPodliteSource = (code: string): string => {
+    return code.split('\n').map(line => {
+      let html = line
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
 
-  // useEffect(() => {
-  //     const params = new URLSearchParams()
-  //     if (query) {
-  //       params.append("p", query)
-  //     } else {
-  //       params.delete("p")
-  //     }
-  //     if (history) {
-  //      history.push({hash: params.toString()})
-  //     }
-  //   }, [query, history])
+      // Directives: =head1, =item, =begin, =end, =for, =table, =code, etc.
+      html = html.replace(
+        /^(\s*)(=\w+)/,
+        '$1<span style="color:#e06c75;font-weight:bold">$2</span>'
+      )
+      // Attributes: :key('value') or :key<value>
+      html = html.replace(
+        /(:[\w]+)(\()([^)]*)(\))/g,
+        '<span style="color:#56b6c2;font-weight:bold">$1</span>$2<span style="color:#98c379">$3</span>$4'
+      )
+      html = html.replace(
+        /(:[\w]+)(&lt;)([^&]*)(&gt;)/g,
+        '<span style="color:#56b6c2;font-weight:bold">$1</span>$2<span style="color:#98c379">$3</span>$4'
+      )
+      // Formatting codes: B<>, I<>, C<>, L<>, etc.
+      html = html.replace(
+        /([BICLDNXZSFEUAKV])(&lt;)/g,
+        '<span style="color:#e5c07b;font-weight:bold">$1$2</span>'
+      )
+      html = html.replace(
+        /(&gt;)/g,
+        '<span style="color:#e5c07b">$1</span>'
+      )
+      // Links
+      html = html.replace(
+        /(https?:\/\/[^\s&<>]+)/g,
+        '<span style="color:#61afef;text-decoration:underline">$1</span>'
+      )
+      // Strings in single quotes
+      html = html.replace(
+        /&#39;([^&]*)&#39;/g,
+        '<span style="color:#98c379">&#39;$1&#39;</span>'
+      )
 
-  // reset text to template
-  const [isChanged, setChanged] = useState(false)
-  const [isAutocompleteOn, setAutocomplete] = useState(true)
-  const [isHighlightSourceOn, setHighlightSource] = useState(true)
+      return html
+    }).join('\n')
+  }
+
+  // Code Card component for ray.so-style preview
+  const CodeCard = () => {
+    const bg = isDarkTheme
+      ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+      : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    const windowBg = '#282c34'
+    const titleBarBg = '#21252b'
+    const textColor = '#abb2bf'
+
+    return (
+      <div ref={cardRef} style={{
+        padding: '40px',
+        background: bg,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        minHeight: '100%',
+        boxSizing: 'border-box',
+      }}>
+        <div style={{
+          background: windowBg,
+          borderRadius: '10px',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+          overflow: 'hidden',
+          maxWidth: '700px',
+          width: '100%',
+        }}>
+          {/* Title bar */}
+          <div style={{
+            background: titleBarBg,
+            padding: '10px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            borderBottom: `1px solid ${isDarkTheme ? '#363b44' : '#363b44'}`,
+          }}>
+            <div style={{ display: 'flex', gap: '8px', marginRight: '12px' }}>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f56' }} />
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }} />
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#27c93f' }} />
+            </div>
+            <span style={{ color: '#848d9e', fontSize: 13, fontFamily: 'Menlo,monospace' }}>
+              {cardTitle}
+            </span>
+          </div>
+          {/* Source code */}
+          <pre style={{
+            margin: 0,
+            padding: '20px 24px',
+            background: windowBg,
+            color: textColor,
+            fontSize: 14,
+            lineHeight: 1.7,
+            fontFamily: 'Menlo, Monaco, Consolas, monospace',
+            overflow: 'auto',
+            whiteSpace: 'pre',
+            tabSize: 4,
+            border: 'none',
+            borderRadius: 0,
+          }}
+            dangerouslySetInnerHTML={{ __html: highlightPodliteSource(query) }}
+          />
+        </div>
+      </div>
+    )
+  }
 
   const copyToClipboard = () => {
     copy(document.location.href)
@@ -277,74 +369,189 @@ const App1: React.FC = () => {
       position: 'top-center',
     })
   }
+
+  const exportPng = () => {
+    if (!isCardMode) {
+      toast.warn('Switch to Card mode first (card icon)', { position: 'top-center' })
+      return
+    }
+    const el = cardRef.current
+    if (!el) {
+      toast.warn('Card not ready', { position: 'top-center' })
+      return
+    }
+    domtoimage.toPng(el, { quality: 1.0, style: { overflow: 'visible' } })
+      .then((dataUrl: string) => {
+        const link = document.createElement('a')
+        link.download = 'podlite-snippet.png'
+        link.href = dataUrl
+        link.click()
+        toast.success('PNG saved', { position: 'top-center' })
+      })
+      .catch((err: any) => {
+        console.error('PNG export failed:', err)
+        toast.error('PNG export failed', { position: 'top-center' })
+      })
+  }
+
   return (
     <div className="App">
-      <div style={{ textAlign: 'left', margin: '0em 1em' }}>
-        <h1 className="title">
-          <a href="https://podlite.org" target="_blank">
-            Podlite
-          </a>{' '}
-          online editor (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/podlite/podlite/tree/main/packages/podlite-schema"
-          >
-            {version}
-          </a>
-          )
-        </h1>
-        <ImListNumbered
-          className={isLineNumbers ? 'iconOn' : 'iconOff'}
-          title="toggle line numbers"
-          onClick={() => setLineNumbers(!isLineNumbers)}
-        />
-        <BsArrowsFullscreen
-          className={isFullScreenPreview ? 'iconOn' : 'iconOff'}
-          title="Toggle fullscreen"
-          onClick={() => setFullScreenPreview(!isFullScreenPreview)}
-        />
-        <AiOutlineClear
-          className={isChanged ? 'iconOn' : 'iconOff'}
-          title="Reset text to template"
-          onClick={() => {
-            // setChanged(false); // setQuery(deftext);  // updateHistory(deftext);
-            if (window.confirm('Are you really sure?')) {
-              document.location.assign('/')
-            }
-          }}
-        />
-        <AiOutlineLink onClick={copyToClipboard} className="iconOn" title="Copy url to this text" />
-        <ImMagicWand
-          onClick={() => setAutocomplete(!isAutocompleteOn)}
-          className={isAutocompleteOn ? 'iconOn' : 'iconOff'}
-          title="toggle autocomplete for directives"
-        />
-        <AiFillFormatPainter
-          onClick={() => setHighlightSource(!isHighlightSourceOn)}
-          className={isHighlightSourceOn ? 'iconOn' : 'iconOff'}
-          title="toggle highlighting mode for source"
-        />
-        
-      </div>
-     <MathJaxProvider src="/static/mathjax-3.2.2/es5/tex-chtml-full.js">
-    
-  
-      <Editor
-        isLineNumbers={isLineNumbers}
-        isPreviewModeEnabled={isFullScreenPreview}
-        isControlled={true}
-        isAutoComplete={isAutocompleteOn}
-        content={query}
-        onChangeSource={(content: string) => {
-          setQuery(content)
-        }}
-        sourceType={'pod6'}
-        onConvertSource={onConvertSource}
-        isHighlightSource={isHighlightSourceOn}
-        // isDarkTheme={true}
-      />
-      </MathJaxProvider>
+      {viewerMode ? null : (
+        <div style={{ textAlign: 'left', margin: '0em 1em', display: 'flex', alignItems: 'center' }}>
+          <div>
+            <BsArrowsFullscreen
+              className={isFullScreenPreview ? 'iconOn' : 'iconOff'}
+              title="Toggle fullscreen"
+              onClick={() => setFullScreenPreview(!isFullScreenPreview)}
+            />
+            <AiOutlineClear
+              className={isChanged ? 'iconOn' : 'iconOff'}
+              title="Reset text to template"
+              onClick={() => {
+                if (window.confirm('Are you really sure?')) {
+                  document.location.assign('/')
+                }
+              }}
+            />
+            <AiOutlineLink onClick={copyToClipboard} className="iconOn" title="Copy url to this text" />
+            <ImMagicWand
+              onClick={() => setAutocomplete(!isAutocompleteOn)}
+              className={isAutocompleteOn ? 'iconOn' : 'iconOff'}
+              title="toggle autocomplete for directives"
+            />
+          </div>
+          <div style={{ flex: 1 }} />
+          <h1 className="title" style={{ float: 'none', margin: 0 }}>
+            <a href="https://podlite.org" target="_blank" rel="noopener noreferrer">
+              Podlite
+            </a>{' '}
+            online editor (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/podlite/podlite/tree/main/packages/podlite-schema"
+            >
+              {version}
+            </a>
+            )
+          </h1>
+          <div style={{ flex: 1 }} />
+          <div>
+            <BsCardImage
+              className={isCardMode ? 'iconOn' : 'iconOff'}
+              title="Toggle code card mode"
+              onClick={() => setCardMode(!isCardMode)}
+            />
+            {isDarkTheme ? (
+              <BsSun
+                onClick={() => setDarkTheme(false)}
+                className="iconOn"
+                title="Switch to light theme"
+              />
+            ) : (
+              <BsMoon
+                onClick={() => setDarkTheme(true)}
+                className="iconOn"
+                title="Switch to dark theme"
+              />
+            )}
+          </div>
+        </div>
+      )}
+      {isCardMode ? (
+        <div style={{ display: 'flex', height: `${editorHeight}px` }}>
+          <div style={{ flex: 1, overflow: 'hidden' }}>
+            <PodliteEditor
+              value={query}
+              height={`${editorHeight}px`}
+              enablePreview={false}
+              enableAutocompletion={isAutocompleteOn}
+              onChange={(value: string) => {
+                setQuery(value)
+                setChanged(true)
+                pushHash({ p: value, f: isFullScreenPreview })
+              }}
+            />
+          </div>
+          <div style={{
+            flex: 1,
+            overflow: 'auto',
+            background: isDarkTheme ? '#0d1117' : '#e8e8e8',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'sticky',
+              top: 8,
+              zIndex: 10,
+              display: 'flex',
+              justifyContent: 'flex-end',
+              gap: 8,
+              padding: '8px 16px',
+            }}>
+              <input
+                id="card-title"
+                name="card-title"
+                value={cardTitle}
+                onChange={(e) => setCardTitle(e.target.value)}
+                style={{
+                  padding: '6px 10px',
+                  borderRadius: 6,
+                  border: 'none',
+                  fontSize: 13,
+                  fontFamily: 'Menlo, monospace',
+                  background: isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)',
+                  color: isDarkTheme ? '#c9d1d9' : '#24292f',
+                  outline: 'none',
+                  width: `${Math.max(cardTitle.length, 8) + 3}ch`,
+                }}
+              />
+              <button
+                onClick={exportPng}
+                title="Export as PNG"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  padding: '6px 14px',
+                  borderRadius: 6,
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: 13,
+                  fontWeight: 500,
+                  background: isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)',
+                  color: isDarkTheme ? '#c9d1d9' : '#24292f',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
+                <AiOutlineCamera size={16} /> Export PNG
+              </button>
+            </div>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+            }}>
+              <CodeCard />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <MathJaxProvider src="/static/mathjax-3.2.2/es5/tex-chtml-full.js">
+          <PodliteEditor
+            value={query}
+            height={`${editorHeight}px`}
+            enablePreview={true}
+            previewWidth={isFullScreenPreview ? '100%' : '50%'}
+            enableAutocompletion={isAutocompleteOn}
+            makePreviewComponent={makePreview}
+            onChange={(value: string) => {
+              setQuery(value)
+              setChanged(true)
+              pushHash({ p: value, f: isFullScreenPreview })
+            }}
+          />
+        </MathJaxProvider>
+      )}
     </div>
   )
 }
