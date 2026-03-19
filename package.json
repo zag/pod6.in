@@ -10,8 +10,8 @@
     "@types/node": "^12.0.0",
     "@types/react": "17.0.2",
     "@types/react-dom": "17.0.2",
-    "codemirror": "^5.60.0",
-    "podlite": "^0.0.38",
+    "dom-to-image-more": "^3.7.2",
+    "podlite": "^0.0.47",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "5.0.1",
@@ -52,15 +52,13 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
-    "@podlite/editor-react": "^0.0.31",
-    "@podlite/formula": "^0.0.7",
-    "@podlite/to-jsx": "^0.0.29",
-    "@types/react-router-dom": "^5.1.7",
+    "@podlite/editor-react": "^0.0.40",
+    "@podlite/formula": "^0.0.16",
+    "@podlite/to-jsx": "^0.0.38",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
     "mathjax": "^3.2.2",
-    "react-icons": "^4.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-icons": "^4.2.0"
   },
   "packageManager": "yarn@3.1.0"
 }
