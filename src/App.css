@@ -1,11 +1,29 @@
 .App {
-  text-align: center;
+  text-align: left;
   position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 990;
+}
+body[data-color-mode='dark'] {
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+body[data-color-mode='dark'] .App > div > h1,
+body[data-color-mode='dark'] .App > div > h1 a {
+  color: #484f58;
+}
+body[data-color-mode='dark'] .iconOn {
+  color: #c9d1d9;
+}
+body[data-color-mode='dark'] .iconOff {
+  color: #484f58;
+}
+body[data-color-mode='dark'] .podlite-editor-preview {
+  background-color: #0d1117;
+  color: #c9d1d9;
 }
 .App> h1, h1 > a {
   color: lightgray;
@@ -129,6 +147,15 @@ height: 100%;
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Fullscreen preview: center content with readable width */
+.podlite-editor-preview.Editorright.layoutPreview {
+    width: 100%;
+}
+.podlite-editor-preview.Editorright.layoutPreview > .content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 #zdgraph-div {
