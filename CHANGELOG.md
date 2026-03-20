@@ -1,5 +1,17 @@
 # podlite-online-editor
 
+# 0.1.24
+
+- migrated to Editor2 (CodeMirror 6) from CodeMirror 5
+- updated podlite and @podlite/* packages to 0.0.54+
+- fixed portal resolutions (Dropbox -> Work/projects/)
+- removed react-router-dom, using native hash API for URL sharing
+- added code card mode (ray.so-style) with PNG export via dom-to-image-more
+- added dark/light theme toggle (follows system preference)
+- added Shiki code highlighting in preview
+- added editable card title
+- removed codemirror 5.x dependency
+
 # 0.1.23
 
 - update deps
