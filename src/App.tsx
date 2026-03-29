@@ -18,6 +18,7 @@ import { version } from '@podlite/schema'
 
 import '@podlite/editor-react/esm/Editor.css'
 import '@podlite/editor-react/esm/podlite-vars.css'
+import '@podlite/to-jsx/lib/podlite.css'
 import './App.css'
 
 let deftext = `
