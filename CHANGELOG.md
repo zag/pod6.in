@@ -1,5 +1,10 @@
 # podlite-online-editor
 
+# 0.1.25
+
+- update podlite and @podlite/* packages
+- fix preview initial scroll skipping TOC — wrap `type:'toc'` nodes with `#line-N` anchor
+
 # 0.1.24
 
 - migrated to Editor2 (CodeMirror 6) from CodeMirror 5

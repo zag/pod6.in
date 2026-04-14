@@ -207,11 +207,12 @@ const App1: React.FC<AppProps> = ({ source, viewerMode = false }) => {
       typeof node !== 'string' &&
       'type' in node &&
       'location' in node &&
-      node.type === 'block' &&
-      (['para', 'head', 'item', 'table', 'comment', 'nested', 'input', 'output', 'pod', 'caption'].includes(
-        node.name,
-      ) ||
-        isNamedBlock(node.name))
+      (node.type === 'toc' ||
+        (node.type === 'block' &&
+          (['para', 'head', 'item', 'table', 'comment', 'nested', 'input', 'output', 'pod', 'caption'].includes(
+            node.name,
+          ) ||
+            isNamedBlock(node.name))))
     ) {
       //@ts-ignore
       const line = node.location.start.line

@@ -2789,11 +2789,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podlite/diagram@npm:^0.0.40":
-  version: 0.0.40
-  resolution: "@podlite/diagram@npm:0.0.40"
+"@podlite/diagram@npm:^0.0.41":
+  version: 0.0.41
+  resolution: "@podlite/diagram@npm:0.0.41"
   dependencies:
-    "@podlite/schema": 0.0.36
+    "@podlite/schema": 0.0.37
     mermaid: 8.12.1
     react-is: ^18.0.0
   peerDependencies:
@@ -2801,13 +2801,13 @@ __metadata:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
     react-is: "*"
-  checksum: 5aab2ab51afc51d9c215f50baf1379901248f1a74ed517e05aeda480bf17dff11a98b1ffbd41734af1b6b71c056f0fcf1c91e2d410be86f1287c6a3fa7a101e4
+  checksum: 3b194d405e22274e25f4087e424010fd54fe9d0f5b4c99db125544d1557dbc47ad4d82fa0d1f145f8729d5e209ce27b3276123ee2ee24193a0ea316d46fcc855
   languageName: node
   linkType: hard
 
-"@podlite/editor-react@npm:^0.0.42":
-  version: 0.0.42
-  resolution: "@podlite/editor-react@npm:0.0.42"
+"@podlite/editor-react@npm:^0.0.43":
+  version: 0.0.43
+  resolution: "@podlite/editor-react@npm:0.0.43"
   dependencies:
     "@codemirror/autocomplete": ^6.18.6
     "@codemirror/language": ^6.10.8
@@ -2822,41 +2822,41 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
-  checksum: 49c8b6c265bace36c383e20a7053b4e8c43c07b9bfce5182e26fdd8d9decd3fda57356d78011c84531fd0d336ffa64a7316ff8bfbe00e603659893252d5d771c
+  checksum: b0e493f3ba3b68f109310625aa59ea1ea6d7e1d70a340753510ff85c9dc8aad6a5659b79d6c890a6c910e25a0e5df637a207b68bd9e74d9667689823de168b8a
   languageName: node
   linkType: hard
 
-"@podlite/formula@npm:0.0.18, @podlite/formula@npm:^0.0.18":
-  version: 0.0.18
-  resolution: "@podlite/formula@npm:0.0.18"
+"@podlite/formula@npm:0.0.19, @podlite/formula@npm:^0.0.19":
+  version: 0.0.19
+  resolution: "@podlite/formula@npm:0.0.19"
   dependencies:
-    "@podlite/schema": 0.0.36
+    "@podlite/schema": 0.0.37
     react-is: ^18.0.0
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
     react-is: "*"
-  checksum: a0b85eb9a7d14eca231aec1ccaf4582b006f8972d2ae1c78615b25c4188c5c6e9e1c44dec48a4d0c99fd8cf9353eb1c7ab1c3d04ec6601b5ba178c0722981596
+  checksum: 9c821108d5c99450d6d90a1c6b1a37cf06c6bd854cc5c871fdb9f6c8761db4264cea40be04da5d99810b1c48f1b0b0b84606892a37a8b8d6c29ba59b8e6be9f7
   languageName: node
   linkType: hard
 
-"@podlite/image@npm:^0.0.35":
-  version: 0.0.35
-  resolution: "@podlite/image@npm:0.0.35"
+"@podlite/image@npm:^0.0.36":
+  version: 0.0.36
+  resolution: "@podlite/image@npm:0.0.36"
   dependencies:
-    "@podlite/schema": ^0.0.36
+    "@podlite/schema": ^0.0.37
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
-  checksum: 9da5e67f06d2c04679fe8c6a0beaa43f03e30960c91beee2beea5fc8c542f87b194e2821c060ee3740844a5339b4af33ebb66fda499e249241e8542f1a1363f6
+  checksum: 5f0146dbe8a58a43a0b8efa348387fad661b669442e1eefa71039a3ce659fe2fcbc0808aaac31157cff1fe97059bc6348c3a3d19c054b73ab7842df5079e3495
   languageName: node
   linkType: hard
 
-"@podlite/markdown@npm:0.0.29":
-  version: 0.0.29
-  resolution: "@podlite/markdown@npm:0.0.29"
+"@podlite/markdown@npm:0.0.30":
+  version: 0.0.30
+  resolution: "@podlite/markdown@npm:0.0.30"
   dependencies:
-    "@podlite/schema": 0.0.36
+    "@podlite/schema": 0.0.37
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
     react-is: ^18.0.0
@@ -2867,53 +2867,53 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
-  checksum: d51861b8fddb402db614fe5d386ece2b776d4270b0a7c545d35ebac63f056ad2f8b63f21de9261ed9f0dcb6e7987dba83c3aa30dd5ba3fab26a24e2111623452
+  checksum: 523d309c546c6f585b143b7c0e321f9697fa57ba43aa50cf5cc9be8e71679427b0c880a07769dfa7fa2864f0aa9ee497bcbc216ff5b0e0dcb1c7ae0529a1b130
   languageName: node
   linkType: hard
 
-"@podlite/schema@npm:0.0.36, @podlite/schema@npm:^0.0.36":
-  version: 0.0.36
-  resolution: "@podlite/schema@npm:0.0.36"
+"@podlite/schema@npm:0.0.37, @podlite/schema@npm:^0.0.37":
+  version: 0.0.37
+  resolution: "@podlite/schema@npm:0.0.37"
   dependencies:
     ajv: ^7.2.3
     events: ^3.1.0
     json-pointer: ^0.6.1
     nanoid: 3.1.30
     slugify: ^1.6.6
-  checksum: a5bc03174d23405ede829dcbc7edc93fe8f550534299ac3382400ebb6d7d8e74233bf6de20fa26dd62cc566f1e54f8d13d5ff9de0f86645a1072432c47ad9745
+  checksum: aed18ce3bf3bd3c73263d08f011b84f1c67bf699e2efac701dbfbb011821ea062d641e0014e2b10850b1b75f7ef430620a0f73e3590f6e0121bb3a7d3d4a5072
   languageName: node
   linkType: hard
 
-"@podlite/to-jsx@npm:^0.0.40":
-  version: 0.0.40
-  resolution: "@podlite/to-jsx@npm:0.0.40"
+"@podlite/to-jsx@npm:^0.0.41":
+  version: 0.0.41
+  resolution: "@podlite/to-jsx@npm:0.0.41"
   dependencies:
-    "@podlite/diagram": ^0.0.40
-    "@podlite/schema": 0.0.36
+    "@podlite/diagram": ^0.0.41
+    "@podlite/schema": 0.0.37
     entities: ^4.5.0
-    podlite: 0.0.49
+    podlite: 0.0.50
     react-is: ^18.0.0
   peerDependencies:
     "@podlite/diagram": "*"
     "@podlite/schema": "*"
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
-  checksum: d85bc5780f2ec1893834bcf1d53a625ea193189de3fe1c287bf803e761dcf4166f0c58653a1c92bdd3f0032326ae4a6427311f546091756869ee1b09189c3b77
+  checksum: 3b09bb3720b4a1be85a1e8ab68225b946f8439e3b5f6ea51099e1a0505f0a3965fa98f02f5541faa915efe8098934f9e97b6c1094c4c111e001db822700c2f73
   languageName: node
   linkType: hard
 
-"@podlite/toc@npm:0.0.29":
-  version: 0.0.29
-  resolution: "@podlite/toc@npm:0.0.29"
+"@podlite/toc@npm:0.0.30":
+  version: 0.0.30
+  resolution: "@podlite/toc@npm:0.0.30"
   dependencies:
-    "@podlite/schema": 0.0.36
+    "@podlite/schema": 0.0.37
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
     react-is: ^18.0.0
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
-  checksum: a88daa588ad3575a14315439c18b9be635c03dd6acbf0378caa31e7d88f8d72586851e67f77a454633c204649a8d4002adee5a4795e05aead81b9cff2b318fdc
+  checksum: 685702eb5ef1943fcbdea2152ffab242cd955e73da89ae17aec3eff16ca8aadddd12a3aafef2a0cebeac787af8fcc749cfea4537ca0aa00d680e2c3ff52de0d5
   languageName: node
   linkType: hard
 
@@ -12368,23 +12368,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"podlite@npm:0.0.49, podlite@npm:^0.0.49":
-  version: 0.0.49
-  resolution: "podlite@npm:0.0.49"
+"podlite@npm:0.0.50, podlite@npm:^0.0.50":
+  version: 0.0.50
+  resolution: "podlite@npm:0.0.50"
   dependencies:
-    "@podlite/diagram": ^0.0.40
-    "@podlite/formula": 0.0.18
-    "@podlite/image": ^0.0.35
-    "@podlite/markdown": 0.0.29
-    "@podlite/schema": ^0.0.36
-    "@podlite/toc": 0.0.29
+    "@podlite/diagram": ^0.0.41
+    "@podlite/formula": 0.0.19
+    "@podlite/image": ^0.0.36
+    "@podlite/markdown": 0.0.30
+    "@podlite/schema": ^0.0.37
+    "@podlite/toc": 0.0.30
     nanoid: 3.1.30
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18
     react-dom: ^16.0.0 || ^17.0.0 || ^18
   bin:
     podlite: ./bin/podlite.js
-  checksum: f496af3d5531a1aebc7ea69d624a745a48982ee721ec23fef5ff8b165bf751b17cebedfd86a32e2d6a4343ec47625ee8371f373f46f56e5bb86bc0f6ab00674b
+  checksum: 14f8aceb1388ed74148bd406b39db73ae7a953365d7118482b2fce1f8060cadc9495b32c2fbabc2f75449e083340ee0f7a8c729f0c45270f8bc58e5c6a8507de
   languageName: node
   linkType: hard
 
@@ -14137,9 +14137,9 @@ __metadata:
   dependencies:
     "@babel/plugin-proposal-private-property-in-object": ^7.21.11
     "@craco/craco": ^7.1.0
-    "@podlite/editor-react": ^0.0.42
-    "@podlite/formula": ^0.0.18
-    "@podlite/to-jsx": ^0.0.40
+    "@podlite/editor-react": ^0.0.43
+    "@podlite/formula": ^0.0.19
+    "@podlite/to-jsx": ^0.0.41
     "@testing-library/jest-dom": ^4.2.4
     "@testing-library/react": ^9.3.2
     "@testing-library/user-event": ^7.1.2
@@ -14151,7 +14151,7 @@ __metadata:
     copy-to-clipboard: ^3.3.1
     dom-to-image-more: ^3.7.2
     mathjax: ^3.2.2
-    podlite: ^0.0.49
+    podlite: ^0.0.50
     react: 17.0.2
     react-dom: 17.0.2
     react-icons: ^4.2.0
