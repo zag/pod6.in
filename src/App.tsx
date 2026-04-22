@@ -201,8 +201,10 @@ const App1: React.FC<AppProps> = ({ source, viewerMode = false }) => {
     return () => window.removeEventListener('resize', onResize)
   }, [toolbarHeight])
 
-  // wrap all elements and add line link info
-  const wrapFunction = (node: any, children: any) => {
+  // Stable references — theme/viewer/autocomplete state changes must not
+  // invalidate the preview pipeline (each invalidation re-parses the tree
+  // and re-runs Shiki on every code block, costing 100-400ms per click).
+  const wrapFunction = React.useCallback((node: any, children: any) => {
     if (
       typeof node !== 'string' &&
       'type' in node &&
@@ -224,9 +226,9 @@ const App1: React.FC<AppProps> = ({ source, viewerMode = false }) => {
     } else {
       return children
     }
-  }
+  }, [])
 
-  const codeHighlightPlugins = (makeComponent: any) => {
+  const codeHighlightPlugins = React.useCallback((makeComponent: any) => {
     const mkComponent = (src: any) => (writer: any, processor: any) => (node: any, ctx: any, interator: any) => {
       return makeComponent(src, node, 'content' in node ? interator(node.content, { ...ctx }) : [], ctx)
     }
@@ -239,9 +241,9 @@ const App1: React.FC<AppProps> = ({ source, viewerMode = false }) => {
       ':code': hcode,
       code: hcode,
     }
-  }
+  }, [])
 
-  const makePreview = (text: string): ConverterResult => {
+  const makePreview = React.useCallback((text: string): ConverterResult => {
     // Side effects moved to onChange to avoid setState during render
     let podlite = podlite_core({ importPlugins: true }).use({
       Diagram: DiagramPlugin,
@@ -251,7 +253,7 @@ const App1: React.FC<AppProps> = ({ source, viewerMode = false }) => {
 
     //@ts-ignore
     return { result: <Podlite wrapElement={wrapFunction} plugins={codeHighlightPlugins} tree={asAst} />, errors: asAst.errors }
-  }
+  }, [wrapFunction, codeHighlightPlugins])
 
   // Syntax highlight Podlite source code for card view (One Dark Pro palette, high contrast)
   const highlightPodliteSource = (code: string): string => {
