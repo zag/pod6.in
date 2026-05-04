@@ -1,5 +1,5 @@
 {
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "Online editor for Podlite - a block-based lightweight markup language",
   "private": true,
   "dependencies": {
@@ -11,7 +11,7 @@
     "@types/react": "17.0.2",
     "@types/react-dom": "17.0.2",
     "dom-to-image-more": "^3.7.2",
-    "podlite": "^0.0.52",
+    "podlite": "^0.0.53",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "5.0.1",
@@ -52,9 +52,9 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
-    "@podlite/editor-react": "^0.0.45",
-    "@podlite/formula": "^0.0.21",
-    "@podlite/to-jsx": "^0.0.43",
+    "@podlite/editor-react": "^0.0.46",
+    "@podlite/formula": "^0.0.22",
+    "@podlite/to-jsx": "^0.0.44",
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
     "mathjax": "^3.2.2",
